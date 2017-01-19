@@ -1,3 +1,4 @@
+
 ## NOTE: I added the arguments x and y because the original code
 ## had the first two lines as:
 ## m1 = min(dat$X[which(dat$Y == 1)],na.rm=T)
