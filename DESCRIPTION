@@ -2,19 +2,23 @@ Package: gonogo
 Type: Package
 Title: Implementation of 3podm and Neyer Sensitivity Test Procedures
 Version: 0.1.0
-Author: Authors@R: c(
-    person("Bradley", "Boehmke", email = "bradleyboehmke@gmail.com", role = c("aut", "cre")),
-    person("Paul", "Roediger", email = "paul.a.roediger.ctr@mail.mil", role = c("aut")),
-    person("Douglas", "Ray", email = "douglas.m.ray.civ@mail.mil", role = c("aut"))
-    )
+Author: Authors@R: c( person("Bradley", "Boehmke", email =
+    "bradleyboehmke@gmail.com", role = c("aut", "cre")), person("Paul", "Roediger",
+    email = "paul.a.roediger.ctr@mail.mil", role = c("aut")), person("Douglas",
+    "Ray", email = "douglas.m.ray.civ@mail.mil", role = c("aut")), person("Freels",
+    "Jason", email = "jason.k.freels@gmail.com", role = c("aut")) )
 Maintainer: Bradley Boehmke <bradleyboehmke@gmail.com>
-Description: Implements the three-phase sensitivity testing procedures known
-    as 3pod and 3podm as described in Wu & Tian (2014 <DOI: http://dx.doi.org/10.1016/j.jspi.2013.10.007>) and
-    Wang, Tian, & Wu (2015 <DOI: 10.5705/ss.2014.197>). Also implements the D-Optimality-based
-    sensitivity testing procedures as defined in Neyer (1994 <DOI: http://dx.doi.org/10.1080/00401706.1994.10485401>) and
-    Ray, Roediger, & Neyer (2014 <DOI: http://dx.doi.org/10.1016/j.jspi.2013.12.010>). It also
-    provides a comprehensive set of functions to analyze and plot sensitivity testing results.
+Description: Implements the three-phase sensitivity testing procedures known as
+    3pod and 3podm as described in Wu & Tian (2014 <DOI: http://dx.doi.org/10.1016/
+    j.jspi.2013.10.007>) and Wang, Tian, & Wu (2015 <DOI: 10.5705/ss.2014.197>).
+    Also implements the D-Optimality-based sensitivity testing procedures as defined
+    in Neyer (1994 <DOI: http://dx.doi.org/10.1080/00401706.1994.10485401>) and Ray,
+    Roediger, & Neyer (2014 <DOI: http://dx.doi.org/10.1016/j.jspi.2013.12.010>). It
+    also provides a comprehensive set of functions to analyze and plot sensitivity
+    testing results.
 License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
-Depends: R (>=2.10)
+Depends:
+    R (>= 2.10)
+RoxygenNote: 5.0.1

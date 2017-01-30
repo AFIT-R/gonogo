@@ -1,8 +1,11 @@
-#####################
-# ALTERNATIVE PLOTS #
-#####################
-
-# History plot
+#' History plot
+#'
+#' @param dat
+#'
+#' @return
+#' @export
+#'
+#' @examples
 pdat1 <- function(dat) {
   dt <- dtt <- dat$d0
   about <- dat$about
@@ -121,7 +124,14 @@ pdat1 <- function(dat) {
   }
 }
 
-# MLE plot
+#' MLE plot
+#'
+#' @param dat
+#'
+#' @return
+#' @export
+#'
+#' @examples
 pdat2=function(dat)
 {
   dt=dtt=dat$d0; about=dat$about; titl=dat$titl; ln=dat$ln;
@@ -180,7 +190,14 @@ pdat2=function(dat)
   if(pee == 0) return(matrix(c(mus,sigs),ncol=2)) else return(matrix(c(mus,sigs,zee),ncol=3));
 }
 
-# Response curve plot
+#' Response curve plot
+#'
+#' @param dat
+#'
+#' @return
+#' @export
+#'
+#' @examples
 pdat3 <- function(dat)
 {
   dt=dtt=dat$d0; about=dat$about; titl=dat$titl; unit=dat$unit; ln=dat$ln; pee=dat$p;
