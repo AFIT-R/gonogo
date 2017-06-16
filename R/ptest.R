@@ -1,7 +1,17 @@
-#' Title
+#' Plots Console Version
 #'
-#' @param dat 
-#' @param plt 
+#' @param dat sensitivity tests "w"
+#' @param plt 8 plots are included
+#' 1: History plot
+#' 2: MLE's of mu and sigma
+#' 3: Response curve, with data
+#' 4: A simple visual of the data
+#' 5: Joint LR multi-confidence bounds
+#' 6: Joint & Individual LR multi-confidence bounds
+#' 7: Joint and/or individual LR confidence bounds
+#' 8: Confidence bounds on probability (p) and quantile (q) computed via 3 methods: Likelihood Ratio (LR), Fisher Matrix (FM) and General Linear Model (GLM)
+#'
+#' pdat1,2,3 missing?
 #'
 #' @return
 #' @export

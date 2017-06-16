@@ -2,20 +2,17 @@
 % Please edit documentation in R/cbs.R
 \name{cbs}
 \alias{cbs}
-\title{Title}
+\title{cbs(w,1) = joint and/or individual lr confidence bound
+cbs(w,2) = confidence bounds on probability (p) and quantile (q) computed via 3 methods:
+Likelihood Ratio (LR), Fisher Matrix (FM), and General Linear Model (GLM)}
 \usage{
 cbs(w, plt, maxitt = 10, response = 1)
 }
 \arguments{
-\item{w}{}
-
-\item{plt}{}
-
-\item{maxitt}{}
-
 \item{response}{}
 }
 \description{
-Title
+cbs(w,1) = joint and/or individual lr confidence bound
+cbs(w,2) = confidence bounds on probability (p) and quantile (q) computed via 3 methods:
+Likelihood Ratio (LR), Fisher Matrix (FM), and General Linear Model (GLM)
 }
-

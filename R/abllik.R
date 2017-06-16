@@ -1,8 +1,8 @@
-#' Title
+#' support
 #'
-#' @param data 
-#' @param mu 
-#' @param sig 
+#' @param data
+#' @param mu
+#' @param sig
 #'
 #' @return
 #' @export

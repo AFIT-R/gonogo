@@ -14,4 +14,3 @@ dose.p(obj, p)
 \description{
 Title
 }
-

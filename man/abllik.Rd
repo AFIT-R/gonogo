@@ -2,18 +2,13 @@
 % Please edit documentation in R/abllik.R
 \name{abllik}
 \alias{abllik}
-\title{Title}
+\title{support}
 \usage{
 abllik(data, mu, sig)
 }
 \arguments{
-\item{data}{}
-
-\item{mu}{}
-
 \item{sig}{}
 }
 \description{
-Title
+support
 }
-

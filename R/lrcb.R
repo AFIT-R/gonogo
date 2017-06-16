@@ -1,6 +1,6 @@
-#' Title
+#' Likelihood ratio confidence bounds plot
 #'
-#' @param dat 
+#' @param dat sensitivity test "w"
 #'
 #' @return
 #' @export
@@ -23,12 +23,12 @@ xx=readline(xx); cat("\n");
 xx=as.numeric(unlist(strsplit(xx," ")));
 
 # Prepare (len) X (len) Grids (z's) for Response Surface
-	len=401; 	
+	len=401;
 	z0=matrix(rep(0,len*len),ncol=len);
 	siglow=.001;
 	meth=1;
-	tit1=dat$title; dat=dat$d0; 
-	
+	tit1=dat$title; dat=dat$d0;
+
 # Compute muhat & sighat if there's overlap
 
 rx=rep(dat$X,dat$COUNT); ry=rep(dat$Y,dat$COUNT); ny=length(ry);
@@ -40,7 +40,7 @@ if(overlap)
 	{
 	if(m1 < M0)
 		{
-		xglm=glm(ry~rx,family=binomial(link=probit),maxit=10.0,epsilon=1e-006);	
+		xglm=glm(ry~rx,family=binomial(link=probit),maxit=10.0,epsilon=1e-006);
 		ab=xglm$coef;
 		sighat=1/ab[2];
 		muhat=-ab[1]*sighat;
@@ -50,9 +50,9 @@ if(overlap)
 		muhat=m1; sighat=sigmin; mx=ry[rx == m1]; s1=sum(mx); l1=length(mx);
 		uu=s1*log(s1)+(l1-s1)*log(l1-s1)-l1*log(l1);
 		}
-	} else 
+	} else
 		{
-		muhat=(m1+M0)/2; sighat=(m1-M0)/2;  
+		muhat=(m1+M0)/2; sighat=(m1-M0)/2;
 		nconf2=(3+pchisq(qchisq(conf1,1),2))/4;
 		uu=1;
 		}
@@ -66,7 +66,7 @@ nobo=F; pcl=T;
 if(overlap)
 {
 	levs=1-qchisq(conf1,1)/(2*uu);
-	con=sum(ry)/length(ry); 
+	con=sum(ry)/length(ry);
 	llc=sum(log(con^ry*(1-con)^(1-ry)));
 	c1max=pchisq(2*(uu-llc),1);
 	bcon1=conf1[conf1 < c1max];
@@ -74,34 +74,34 @@ if(overlap)
 	nu1=length(ucon1);
 	endpr=paste("All conf1's are > c1max (",round(c1max,5),")\n\n",sep="");
 	# Address all unbounded contours
-	if(length(bcon1) == 0)  
+	if(length(bcon1) == 0)
 		{
-		cat(endpr); 
+		cat(endpr);
 		nobo=T;
 		}
-	if(!nobo) bconm=max(bcon1,na.rm=T) else bconm=c1max/2;;
+	if(!nobo) bconm=max(bcon1,na.rm=T) else bconm=c1max/2;
 	levm=1-qchisq(bconm,1)/(2*uu);
 	a=clim(rx,ry,muhat,sighat,uu,levm);
 } else
 	{
 	uu=1;
 	levs=(1-conf2)/4;
-	con=sum(ry)/length(ry); 
+	con=sum(ry)/length(ry);
 	lc=prod(con^ry*(1-con)^(1-ry));
-	c2max=1-4*lc; 
+	c2max=1-4*lc;
 	c1max=pchisq(qchisq(c2max,2),1);
 	bcon2=conf2[conf2 < c2max];
 	ucon2=conf2[conf2 >= c2max];
 	nu1=length(ucon2);
 	endpr=paste("All conf2's are > conf2 (",round(c2max,5),")\n\n",sep="");
 	# Address all unbounded contours
-	if(length(bcon2) == 0)  
+	if(length(bcon2) == 0)
 		{
-		cat(endpr); 
+		cat(endpr);
 		nobo=T; pcl=F;
 		}
 	if(!nobo) bconm=max(bcon2,na.rm=T) else bconm=c2max/2;
-	levm=(1-bconm)/4; 
+	levm=(1-bconm)/4;
 	a=clim0(rx,ry,muhat,sighat,levm);
 }
 
@@ -136,7 +136,7 @@ if(nu1 > 0)
 
 nco=length(conf1);
 #-----------------------------------------------------------------------------
-# Limits for plot 
+# Limits for plot
 xl=yl=numeric(0);
 if(!nobo)for(i in 1:ncl){g=cl[[i]];xl=range(c(xl,g$x));yl=range(c(yl,g$y));}
 if(nclu > 0) {for(i in 1:nclu){g=clu[[i]]; my=min(g$y); yl=range(c(yl,my));}}
@@ -172,7 +172,7 @@ if(ncl > 1 & !nobo)for(i in 1:ncl){ex=cl[[i]]$x; ey=cl[[i]]$y; points(ex,ey,type
 
 b0=round(conf2,3);
 b0=paste(b0,collapse=",")
-b0=gsub("0.",".",b0,fixed=T); 
+b0=gsub("0.",".",b0,fixed=T);
 w1=w2="";
 if(nco > 1) {w1="("; w2=")";}
 b0=paste("c2=",w1,b0,w2,sep="");
@@ -198,7 +198,7 @@ for(i in 1:nclu){g=clu[[i]];xl=range(c(xl,g$x+qnorm(pp)*g$y));}
 xll=c(floor(xl[1]),ceiling(xl[2]));
 pxl2=pretty(xl);
 #-----------------------------------------------------------------------------
-ex=cl[[1]]$x+qnorm(pp)*cl[[1]]$y; 
+ex=cl[[1]]$x+qnorm(pp)*cl[[1]]$y;
 ey=cl[[1]]$y;
 
 plot(ex,ey,type=dtp,xlim=xl,ylim=yl[1:2],xlab="",ylab="",xaxt="n",yaxt="n");
@@ -209,8 +209,8 @@ axis(1,at=pxl2,labels=T,tck=.01,cex=.8,mgp=c(3,.2,0));
 axis(2,at=pyl,labels=T,tck=.01,mgp=c(3,.2,0),las=2);
 mtext("q",side=1,line=1.3,cex=.9);
 
-if(ncl > 1 & pcl)for(i in 1:ncl){ex=cl[[i]]$x+qnorm(pp)*cl[[i]]$y;; ey=cl[[i]]$y; points(ex,ey,type="l");}
-if(nu1 > 0)for(i in 1:length(clu)){exx=clu[[i]]$x+qnorm(pp)*clu[[i]]$y;; eyy=clu[[i]]$y; points(exx,eyy,type="l",col=2);}
+if(ncl > 1 & pcl)for(i in 1:ncl){ex=cl[[i]]$x+qnorm(pp)*cl[[i]]$y; ey=cl[[i]]$y; points(ex,ey,type="l");}
+if(nu1 > 0)for(i in 1:length(clu)){exx=clu[[i]]$x+qnorm(pp)*clu[[i]]$y; eyy=clu[[i]]$y; points(exx,eyy,type="l",col=2);}
 b1=round(conf1,3);
 b1=paste(b1,collapse=",")
 b1=gsub("0.",".",b1,fixed=T);
@@ -220,7 +220,7 @@ b1=gsub("=0.","=.",b1,fixed=T);
 
 mtext(b1,side=3,line=.6,cex=.8);
 if(pp == con) abline(v=muhat+qnorm(pp)*sighat,col=1,lty=2) else
-	{ 
+	{
 	m3=1/(qnorm(pp)+1/m0);
 	abline(sighat-m3*(muhat+qnorm(pp)*sighat),m3,col=1,lty=2);
 	}
@@ -234,7 +234,7 @@ for(i in 1:ncl){g=cl[[i]];xl=range(c(xl,pp,pnorm((qq-g$x)/g$y)));}
 xll=c(floor(xl[1]),ceiling(xl[2]));
 pxl3=pretty(xl);
 #-----------------------------------------------------------------------------
-ex=pnorm((qq-cl[[1]]$x)/cl[[1]]$y); 
+ex=pnorm((qq-cl[[1]]$x)/cl[[1]]$y);
 ey=cl[[1]]$y;
 
 plot(ex,ey,type=dtp,xlim=xl,ylim=yl[1:2],xlab="",ylab="",xaxt="n",yaxt="n");
@@ -282,8 +282,8 @@ lra[[j]]=lrmat1
 grafl(limx);
 for(j in (ncl+nclu):1)
 {
-u=lra[[j]]; 
-if(j > ncl) pcol=2 else pcol=1; 
+u=lra[[j]];
+if(j > ncl) pcol=2 else pcol=1;
 lines(u[,1],qnorm(u[,5]),type="l",col=pcol);
 lines(u[,3],qnorm(u[,5]),type="l",col=pcol);
 }

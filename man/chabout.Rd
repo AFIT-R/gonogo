@@ -16,4 +16,3 @@ chabout(about, s47, loc)
 \description{
 Title
 }
-

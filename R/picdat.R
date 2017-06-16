@@ -1,6 +1,6 @@
-#' Title
+#' A simple visual of the data
 #'
-#' @param dat 
+#' @param dat sensitivity tests "w"
 #'
 #' @return
 #' @export
@@ -18,7 +18,7 @@ l0=l1=numeric(0);
 if(any(yy==1)){m1=min(xx[yy==1]);l1=1;}
 if(any(yy==0)){M0=max(xx[yy==0]);l0=1;}
 
-del=.025; xr=range(xx); pm=c(-1,1); xl=xr+diff(xr)*pm/100; 
+del=.025; xr=range(xx); pm=c(-1,1); xl=xr+diff(xr)*pm/100;
 del=.03;
 yl=c(0,1);
 par(mar=c(0,0,0,0),pin=c(2.4,1.6));

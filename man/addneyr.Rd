@@ -16,4 +16,3 @@ addneyr(dtt, ylm, sim = F)
 \description{
 Title
 }
-

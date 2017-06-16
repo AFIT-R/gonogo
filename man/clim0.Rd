@@ -20,4 +20,3 @@ clim0(rx, ry, m, s, levb)
 \description{
 Title
 }
-

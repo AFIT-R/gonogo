@@ -1,9 +1,12 @@
-#' Title
+#' Confidence Bounds Plots
 #'
-#' @param w 
-#' @param plt 
-#' @param maxitt 
-#' @param response 
+#' @param w sensitivity tests "w"
+#' @param plt
+#' cbs(w,1) = joint and/or individual lr confidence bound
+#' cbs(w,2) = confidence bounds on probability (p) and quantile (q) computed via 3 methods:
+#' Likelihood Ratio (LR), Fisher Matrix (FM), and General Linear Model (GLM)
+#' @param maxitt
+#' @param response
 #'
 #' @return
 #' @export
@@ -56,7 +59,7 @@ if(gs == 1)
 } else
 {
 	# jms must be defined here, as it's used in an if test later
-	cflag=0; jms=0; 
+	cflag=0; jms=0;
 	xx="Enter conf1: ";
 	xx=readline(xx); cat("\n");
 	xx=as.numeric(unlist(strsplit(xx," ")));
@@ -66,7 +69,7 @@ if(gs == 1)
 	g=lrmax(w); c1max=g$c1max; one23=g$one23;
 	if(one23 > 1) {cat(paste("Need interval overlap for this particular plot.\n\n",sep="")); return(); } else
 	if(conf1 >= c1max & gs == 1) {cat(paste("Need conf1 < ",round(c1max,4),", for this particular plot: Try again.\n\n",sep="")); return();}
-		
+
 	dat=w$d0; tit0=w$titl;
 
 # do LR (needed if gs = 1 or 2) if conf1 < c1max and FM & SP (if gs = 2 and dif < 0)
@@ -80,11 +83,11 @@ if(gs == 1)
 
 	if(gs == 1 & jms == 3)
 	{
-	if(pflag == 1) qq=muhat+qnorm(pp)*sighat else pp=pnorm((qq-muhat)/sighat);	
+	if(pflag == 1) qq=muhat+qnorm(pp)*sighat else pp=pnorm((qq-muhat)/sighat);
 	}
 
 # FM & SP for eventual use and for the return
-	
+
 	if(dif<0)fmmat=ml.lims(dat,conf1);
 	if(dif<0)spmat=sp.lims(dat,conf1);
 
@@ -133,7 +136,7 @@ tit2=paste(round(rx[1],rd)," < q < ",round(rx[2],rd),sep="");
 mtext(tit1,side=3,line=1.4,cex=.9);
 mtext(tit2,side=3,line=0.2,cex=.9);
 if(pp == con) abline(v=muhat+qnorm(pp)*sighat,col=1,lty=2) else
-	{ 
+	{
 	m3=1/(qnorm(pp)+1/m0);
 	abline(sighat-m3*(muhat+qnorm(pp)*sighat),m3,col=1,lty=2);
 	}
@@ -180,22 +183,22 @@ par(mfrow = c(2, 2), oma = c(0,0,1,0),  mar = c(3,4,3,1));
 tq2="(qlo,qhi) about q (given p)";	tp2="(plo,phi) about p (given q)";
 tq1="(qlo,qhi) about q (supressing p)";	tp1="(plo,phi) about p (supressing q)";
 # To plot Linearized Response, and CL's versus q
-# For Graph Sheet 2, need Range & delta on q-axis (qmin,qmax,bi) to cover FM, LR, and dose.p qlo's and qhi's 
+# For Graph Sheet 2, need Range & delta on q-axis (qmin,qmax,bi) to cover FM, LR, and dose.p qlo's and qhi's
 
 # Limits for the q axis for the two graphs using the function graf1
-big=0; 
+big=0;
 isiz=.8;
 legq=c("Likelihood Ratio","Fisher Matrix","SPlus (dose.p)");
-legp=c("Likelihood Ratio","Fisher Matrix","SPlus (GLM)");	
+legp=c("Likelihood Ratio","Fisher Matrix","SPlus (GLM)");
 if(big==0){par(mfrow=c(2,2));isiz=.5; legq=legp=c("LR","FM","GLM")};
 if(big!=0)	par(mfrow=c(1,1));
 
-# pr (graf1) is of length 15. For purposes of graphs 4 & 6, 
+# pr (graf1) is of length 15. For purposes of graphs 4 & 6,
 # Skip 1st two & last 2 two - corresponding to 1/million, 1/100000, 99999/10000, 999999/1000000
 
 ih=3:13;
 
-if(dif < 0) 
+if(dif < 0)
 {
 if(conf1 < c1max) {mat[1:11,]=lrmat[ih,]; mat[12:22,]=fmmat[ih,]; mat[23:33,]=spmat[ih,]; i3=3;} else
 {mat[12:22,]=fmmat[ih,]; mat[23:33,]=spmat[ih,]; i3=2;}
@@ -250,9 +253,9 @@ if(i3 == 2 | i3 == 3)
 lines(fmmat[,2],fmmat[,3],col=fmc,lwd=lw);lines(lrmat[,2],lrmat[,3],col=lrc,lwd=lw);lines(spmat[,2],spmat[,3],col=spc,lwd=lw);
 lines(fmmat[,2],fmmat[,1],col=fmc,lwd=lw);lines(lrmat[,2],lrmat[,1],col=lrc,lwd=lw);lines(spmat[,2],spmat[,1],col=spc,lwd=lw);
 lines(lrmat[,2],lrmat[,2],col=8,lwd=lw);
-} 
+}
 
-if(i3 == 1 | i3 == 3) 
+if(i3 == 1 | i3 == 3)
 {
 lines(lrmat[,2],lrmat[,3],col=lrc,lwd=lw);
 lines(lrmat[,2],lrmat[,1],col=lrc,lwd=lw);
@@ -263,10 +266,10 @@ mtext(tq1,side=3,line=1,cex=.9);
 #=====================Graph 7 (Linearized Response with (plo,phi))========================
 
 	graf1(jj5,tp2,2,big,0);
-	
+
 # LCL Curves and UCL Curves about p(q)
 	ep0=0.000001; ep1=1-ep0;
-		
+
 if(i3 == 1 | i3 == 3)
 {
 w=lrmat;cl=lrc;
@@ -285,7 +288,7 @@ lines(w[,2],qnorm(w[,4]+ep0),type="l",col=cl,cex=2,lwd=lw);
 lines(w[,2],qnorm(w[,6]-ep0),type="l",col=cl,cex=2,lwd=lw);
 lines(w[,2],qnorm(w[,5]),type="l",col=8,cex=2,lwd=lw);
 }
-	
+
 #==========================Graph 8 (plo & phi versus p  Plots)============================
 
 h=100;
@@ -298,7 +301,7 @@ axis(2,at=qtic,labels=T,tck=.01,cex=.8,mgp=c(3,.5,0));
 abline(v=pretty(h*c(0,1)),lty=ilt);abline(h=pretty(c(0,100)),lty=ilt);
 
 if(i3 == 2 | i3 == 3)
-{	
+{
 lines(h*fmmat[,5],h*fmmat[,6],col=fmc,lwd=lw);lines(h*spmat[,5],h*spmat[,6],col=spc,lwd=lw);
 lines(h*fmmat[,5],h*fmmat[,4],col=fmc,lwd=lw);lines(h*spmat[,5],h*spmat[,4],col=spc,lwd=lw);
 }

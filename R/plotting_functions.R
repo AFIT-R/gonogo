@@ -1,6 +1,6 @@
-#' History plot
+#' History plot, console version
 #'
-#' @param dat
+#' @param dat sensitivity test "w"
 #'
 #' @return
 #' @export
@@ -124,9 +124,9 @@ pdat1 <- function(dat) {
   }
 }
 
-#' MLE plot
+#' MLE's of mu and sigma plot, console version
 #'
-#' @param dat
+#' @param dat sensitivity test "w"
 #'
 #' @return
 #' @export
@@ -190,9 +190,9 @@ pdat2=function(dat)
   if(pee == 0) return(matrix(c(mus,sigs),ncol=2)) else return(matrix(c(mus,sigs,zee),ncol=3));
 }
 
-#' Response curve plot
+#' Response curve with data plot, console version
 #'
-#' @param dat
+#' @param dat sensitivity test "w"
 #'
 #' @return
 #' @export

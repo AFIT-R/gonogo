@@ -16,4 +16,3 @@ add3pod(dtt, ylm, sim = F)
 \description{
 Title
 }
-

@@ -22,4 +22,3 @@ clim(rx, ry, m, s, uu, levb)
 \description{
 Title
 }
-

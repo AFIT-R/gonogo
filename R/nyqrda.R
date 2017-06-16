@@ -1,18 +1,20 @@
 #' Title
 #'
-#' @param dat 
-#' @param lgit 
-#' @param ln 
-#' @param xmin 
-#' @param xmax 
-#' @param conf 
-#' @param small 
-#' @param response 
-#' @param labx 
-#' @param laby 
-#' @param maxitt 
-#' @param eps 
-#' @param zee 
+#' retrieve some basic information about a test w and the ML fit that was obtained
+#'
+#' @param dat sensitivity test "w"
+#' @param lgit
+#' @param ln
+#' @param xmin
+#' @param xmax
+#' @param conf
+#' @param small
+#' @param response
+#' @param labx
+#' @param laby
+#' @param maxitt
+#' @param eps
+#' @param zee
 #'
 #' @return
 #' @export
@@ -34,7 +36,7 @@ function(dat, lgit = F, ln = F, xmin = -9999., xmax = 9999, conf = 0.95, small
 	b=ab[2]
 	mu= -a/b
 	sig=1/b
-	if(ln) k=2.5 else k=3.5; 
+	if(ln) k=2.5 else k=3.5;
 	pm=c(-1,1); pee=pnorm(pm*k);
 	if(!ln) a1=pretty(mu+k*sig*pm) else a1=pretty(qlnorm(pee,meanlog=mu,sdlog=sig))
 	if(!ln) a2 = range(c(a1,range(x))) else a2=range(c(a1,range(dat$RX)));
@@ -46,13 +48,13 @@ function(dat, lgit = F, ln = F, xmin = -9999., xmax = 9999, conf = 0.95, small
 	if(zee == 1) 	w = qnorm(conf);
 	yu = yy$fit + w * yy$se.fit;
 	yl = yy$fit - w * yy$se.fit;
-	if(!lgit) 
+	if(!lgit)
 		{
 		ynu = pnorm(yu);
 		ynl = pnorm(yl);
 		yn = pnorm(yy$fit);
 		}
-	if(lgit) 
+	if(lgit)
 		{
 		ynu = plogis(yu);
 		ynl = plogis(yl);
@@ -61,8 +63,8 @@ function(dat, lgit = F, ln = F, xmin = -9999., xmax = 9999, conf = 0.95, small
 	if(ln) xs = exp(xs)
 	plot(xs, yn, ylim = c(0,1), type = "n", las = 1., cex=.6, xlab = labx, ylab = laby)
 	abline(h = 0.1 * c(0.:10.), lty = ldot)
-	if(!ln) {abline(v = pretty(a2), lty = ldot); dpts=dnorm(xs,mean=mu,sd=sig);} else 
-	{abline(v=pretty(range(xs)),lty=ldot); 
+	if(!ln) {abline(v = pretty(a2), lty = ldot); dpts=dnorm(xs,mean=mu,sd=sig);} else
+	{abline(v=pretty(range(xs)),lty=ldot);
 	dpts=dlnorm(xs,meanlog=mu,sdlog=sig);}
 	em=max(dpts);
 	lines(xs,dpts/em,type="l",col=8,lwd=2);
@@ -73,7 +75,7 @@ function(dat, lgit = F, ln = F, xmin = -9999., xmax = 9999, conf = 0.95, small
 	nxv=length(xsav);
 	if(!ln) {for(i in 1:nxv) points(xsav[i],ysav[i]+(ysav[i]-.5)/25,pch=4,lwd=1.5,cex=.5);} else
 	{for(i in 1:nxv) points(exp(xsav[i]),ysav[i]+(ysav[i]-.5)/25,pch=4,lwd=1.5,cex=.5);}
-	xx=list(xglm, a, b, mu, sig); 
+	xx=list(xglm, a, b, mu, sig);
 	names(xx)=c("xglm","a","b","mu","sig");
 	reset()
 	return(xx)

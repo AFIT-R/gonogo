@@ -12,4 +12,3 @@ about4(x)
 \description{
 Title
 }
-
