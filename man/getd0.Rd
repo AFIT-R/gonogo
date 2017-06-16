@@ -30,4 +30,3 @@ getd0(xx, d0, dat0, ID, reso, about, titl, unit, ln, cab = F)
 \description{
 Title
 }
-

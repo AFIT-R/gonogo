@@ -14,4 +14,3 @@ ydeldet(kn, b)
 \description{
 Title
 }
-

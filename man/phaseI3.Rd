@@ -26,4 +26,3 @@ phaseI3(d0, dat0, sg, reso, about, titl, unit, ln)
 \description{
 Title
 }
-

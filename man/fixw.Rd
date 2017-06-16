@@ -14,4 +14,3 @@ fixw(w, k = 1)
 \description{
 Title
 }
-

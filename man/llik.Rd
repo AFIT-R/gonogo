@@ -18,4 +18,3 @@ llik(mydata, mu, sig, response = 1)
 \description{
 Title
 }
-

@@ -14,4 +14,3 @@ ptest(dat, plt)
 \description{
 Title
 }
-

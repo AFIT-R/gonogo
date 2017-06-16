@@ -14,4 +14,3 @@ mkb0(confv, nam)
 \description{
 Title
 }
-

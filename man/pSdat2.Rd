@@ -12,4 +12,3 @@ pSdat2(dat)
 \description{
 Title
 }
-

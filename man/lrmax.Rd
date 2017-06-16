@@ -14,4 +14,3 @@ lrmax(w, plt = F)
 \description{
 Title
 }
-

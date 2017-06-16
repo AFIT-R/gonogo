@@ -22,4 +22,3 @@ jlik(rx, ry, levs0, ms, op, one23)
 \description{
 Title
 }
-

@@ -12,4 +12,3 @@ stopQuietly(...)
 \description{
 Title
 }
-

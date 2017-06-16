@@ -12,4 +12,3 @@ simp(dat)
 \description{
 Title
 }
-

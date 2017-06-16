@@ -2,43 +2,45 @@
 % Please edit documentation in R/gonogoSim.R
 \name{gonogoSim}
 \alias{gonogoSim}
-\title{Title}
+\title{gonogoSim}
 \usage{
 gonogoSim(mlo, mhi, sg, n2, n3, p, lam, dm = 0, ds = 0, ln = F, plt = 0,
   neyer = F, iseed = -1, IIgo = T, M = 1)
 }
 \arguments{
-\item{mlo}{}
+\item{mlo}{Guess for mu_min}
 
-\item{mhi}{}
+\item{mhi}{Guess for mu_max}
 
-\item{sg}{}
+\item{sg}{Guess for standard deviation, should satisfy: mhi - mlo >= 6*sg}
 
-\item{n2}{}
+\item{n2}{Phase II test size, n2 >= 0, n2 = 0 skips Phase II and proceeds directly to Phase III}
 
-\item{n3}{}
+\item{n3}{Phase III test size, n3 >= 0, n3 = 0 skips Phase III}
 
-\item{p}{}
+\item{p}{Percentile estimation??}
 
-\item{lam}{}
+\item{ln}{test in log(X) units (Experimental ln=T)}
 
-\item{dm}{}
+\item{plt}{pStest.R}
 
-\item{ds}{}
+\item{neyer}{Neyer test (neyer=T) or 3pod test (neyer=F)}
 
-\item{ln}{}
+\item{iseed}{0 <= iseed < Inf if you want repeatability in the X's and Y's
+if iseed is NOT the default, then we set.seed(nd0+iseed) in gd0, where nd0 is the unique trial number within gd0.}
 
-\item{plt}{}
-
-\item{neyer}{}
-
-\item{iseed}{}
-
-\item{IIgo}{}
+\item{IIgo}{IIgo = F <--> Stop Simulation at End of (1) 3pod Phase I2; (2) Neyer Phase I}
 
 \item{M}{}
 }
-\description{
-Title
+\value{
+list(d0,jvec,tmu,tsig,v$mu,v$sig,en,abo,titl,uni,p,reso,ln,lam,neyer,M,dm,ds,iseed)
 }
-
+\description{
+gonogoSim Description
+}
+\examples{
+M= 1;  y1=gonogoSim(0,22,3,5,5,.9,1,plt=1,dm=1,ds=1,M= 1,iseed=5)
+M=10; y10=gonogoSim(0,22,3,5,5,.9,1,plt=1,dm=1,ds=1,M=10,iseed=5)
+Look at graphs: ptest(y1,i) v ptest(10,i), for i=1,2 and 3. Examine y1$d0 and y10$d0
+}

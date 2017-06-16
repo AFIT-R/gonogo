@@ -22,4 +22,3 @@ gxr(x, mu, sig, reso, ln, iset)
 \description{
 Title
 }
-

@@ -20,4 +20,3 @@ ulik(rx, ry, levs0, em, es)
 \description{
 Title
 }
-

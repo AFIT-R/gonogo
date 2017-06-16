@@ -28,4 +28,3 @@ pI1(mlo, mhi, sg, tmu, tsig, reso, ln, iseed, dat0 = data.frame(numeric(0)))
 \description{
 Title
 }
-

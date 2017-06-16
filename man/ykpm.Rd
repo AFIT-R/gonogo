@@ -18,4 +18,3 @@ ykpm(dat, m, es, iplot = 0)
 \description{
 Title
 }
-

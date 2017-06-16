@@ -18,4 +18,3 @@ getxr(x, nd0, reso, ln)
 \description{
 Title
 }
-

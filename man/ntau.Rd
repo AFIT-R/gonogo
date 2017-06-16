@@ -14,4 +14,3 @@ ntau(dat, response = 1)
 \description{
 Title
 }
-

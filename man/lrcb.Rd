@@ -2,7 +2,7 @@
 % Please edit documentation in R/lrcb.R
 \name{lrcb}
 \alias{lrcb}
-\title{Title}
+\title{Likelihood ratio confidence bounds}
 \usage{
 lrcb(dat)
 }
@@ -10,6 +10,5 @@ lrcb(dat)
 \item{dat}{}
 }
 \description{
-Title
+Likelihood ratio confidence bounds
 }
-

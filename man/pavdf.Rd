@@ -28,4 +28,3 @@ pavdf(data.df, ln, plotit = F, response = 0, lineit = F,
 \description{
 Title
 }
-

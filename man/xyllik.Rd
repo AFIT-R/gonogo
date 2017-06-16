@@ -18,4 +18,3 @@ xyllik(rx, ry, m, s)
 \description{
 Title
 }
-

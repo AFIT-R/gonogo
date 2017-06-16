@@ -12,4 +12,3 @@ pdat3(dat)
 \description{
 Response curve plot
 }
-

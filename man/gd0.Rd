@@ -28,4 +28,3 @@ gd0(xx, d0, dat0, ID, mu, sig, reso, ln, iseed = -1)
 \description{
 Title
 }
-

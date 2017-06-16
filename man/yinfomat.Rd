@@ -2,18 +2,13 @@
 % Please edit documentation in R/yinfomat.R
 \name{yinfomat}
 \alias{yinfomat}
-\title{Title}
+\title{Support function}
 \usage{
 yinfomat(dat, mu, sig)
 }
 \arguments{
-\item{dat}{}
-
-\item{mu}{}
-
 \item{sig}{}
 }
 \description{
-Title
+Support function
 }
-

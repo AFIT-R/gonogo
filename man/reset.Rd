@@ -11,4 +11,3 @@ reset()
 leveraged by \code{gonogo} plotting functions where parameters are adjusted
 but are then reset after the plotting outputs are produced.
 }
-

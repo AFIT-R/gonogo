@@ -20,4 +20,3 @@ sp.lims(dat, conf, maxitt = 10, response = 1, rd = 6)
 \description{
 Title
 }
-

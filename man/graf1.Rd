@@ -20,4 +20,3 @@ graf1(limx, t1, k, big, legnd)
 \description{
 Title
 }
-

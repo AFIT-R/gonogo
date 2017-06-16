@@ -26,4 +26,3 @@ pII(d0, dat0, tmu, tsig, n2, reso, ln, iseed)
 \description{
 Title
 }
-

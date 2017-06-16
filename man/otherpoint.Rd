@@ -20,4 +20,3 @@ otherpoint(rx, ry, muhat, levs0, con)
 \description{
 Title
 }
-

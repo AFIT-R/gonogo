@@ -30,4 +30,3 @@ spIIIsim(d0, dat0, tmu, tsig, n3, p, lam, reso, ln, iseed)
 \description{
 Title
 }
-

@@ -32,4 +32,3 @@ wabout13(M, cmlo, cmhi, csg, p, n11, n12, n2, n3, lam, reso)
 \description{
 Title
 }
-

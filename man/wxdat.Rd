@@ -2,14 +2,13 @@
 % Please edit documentation in R/wxdat.R
 \name{wxdat}
 \alias{wxdat}
-\title{Title}
+\title{Data sets used to benchmark LR plots, particularly jlrbc and lrbc and cbs}
 \usage{
 wxdat(ic)
 }
 \arguments{
-\item{ic}{}
+\item{ic}{for ic= 1,...,25 defines various data sets (in list format) considered while developing these LR graphics}
 }
 \description{
-Title
+Data sets used to benchmark LR plots, particularly jlrbc and lrbc and cbs
 }
-

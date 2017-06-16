@@ -26,4 +26,3 @@ phaseII(d0, dat0, n2, reso, about, titl, unit, ln)
 \description{
 Title
 }
-

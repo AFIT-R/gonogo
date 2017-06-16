@@ -28,4 +28,3 @@ phaseI1(dat0, mlo, mhi, sg, reso, about, titl, unit, ln)
 \description{
 Title
 }
-

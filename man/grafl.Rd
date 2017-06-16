@@ -12,4 +12,3 @@ grafl(limx)
 \description{
 Title
 }
-

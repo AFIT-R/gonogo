@@ -38,4 +38,3 @@ nyqrda(dat, lgit = F, ln = F, xmin = -9999, xmax = 9999, conf = 0.95,
 \description{
 Title
 }
-

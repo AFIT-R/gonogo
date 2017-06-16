@@ -12,4 +12,3 @@ pdat2(dat)
 \description{
 MLE plot
 }
-

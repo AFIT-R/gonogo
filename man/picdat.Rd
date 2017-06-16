@@ -12,4 +12,3 @@ picdat(dat)
 \description{
 Title
 }
-

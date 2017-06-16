@@ -2,7 +2,7 @@
 % Please edit documentation in R/jlrcb.R
 \name{jlrcb}
 \alias{jlrcb}
-\title{Title}
+\title{Joint & Individual likelihood ratio confidence bounds}
 \usage{
 jlrcb(dat)
 }
@@ -10,6 +10,5 @@ jlrcb(dat)
 \item{dat}{}
 }
 \description{
-Title
+Joint & Individual likelihood ratio confidence bounds
 }
-

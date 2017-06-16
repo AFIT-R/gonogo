@@ -14,4 +14,3 @@ ifg(fg0, fg1)
 \description{
 Title
 }
-

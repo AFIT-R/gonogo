@@ -12,4 +12,3 @@ pdat1(dat)
 \description{
 History plot
 }
-

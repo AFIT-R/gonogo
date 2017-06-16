@@ -2,22 +2,13 @@
 % Please edit documentation in R/glmmle.R
 \name{glmmle}
 \alias{glmmle}
-\title{Title}
+\title{support function}
 \usage{
 glmmle(mydata, response = 1, maxitt = 10, eps = 1e-06, lgit = F)
 }
 \arguments{
-\item{mydata}{}
-
-\item{response}{}
-
-\item{maxitt}{}
-
-\item{eps}{}
-
 \item{lgit}{}
 }
 \description{
-Title
+support function
 }
-

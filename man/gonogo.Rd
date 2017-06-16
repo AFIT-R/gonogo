@@ -2,27 +2,29 @@
 % Please edit documentation in R/gonogo.R
 \name{gonogo}
 \alias{gonogo}
-\title{Title}
+\title{gonogo}
 \usage{
 gonogo(mlo = 0, mhi = 0, sg = 0, newz = T, reso = 0, ln = F,
   neyer = F)
 }
 \arguments{
-\item{mlo}{}
+\item{mlo}{Guess for mu_min}
 
-\item{mhi}{}
+\item{mhi}{Guess for mu_max}
 
-\item{sg}{}
+\item{sg}{Guess for standard deviation, should satisfy: mhi - mlo >= 6*sg}
 
-\item{newz}{}
+\item{newz}{With the newz=F option, it looks for a list, saved as "z", in the immediate environment}
 
-\item{reso}{}
+\item{reso}{A "reso=.125" option, e.g., recommends test levels rounded to the nearest one eighth.}
 
-\item{ln}{}
+\item{ln}{test in log(X) units (Experimental ln=T)}
 
-\item{neyer}{}
+\item{neyer}{Neyer test (neyer=T) or three-phase optimal design (3pod) test (neyer=F)}
+}
+\value{
+list(d0,about,titl,unit,en,p,reso,n2n3,ln,init,lam,neyer,savinit,jvec)
 }
 \description{
-Title
+gonogo description
 }
-

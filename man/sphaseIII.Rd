@@ -30,4 +30,3 @@ sphaseIII(d0, dat0, n3, p, reso, about, titl, unit, ln, lam = 0)
 \description{
 Title
 }
-

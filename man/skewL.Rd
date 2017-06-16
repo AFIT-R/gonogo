@@ -20,4 +20,3 @@ skewL(c1, nu, tau2, p, be)
 \description{
 Title
 }
-

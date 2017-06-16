@@ -16,4 +16,3 @@ tauf(x, y, response = 1)
 \description{
 Title
 }
-

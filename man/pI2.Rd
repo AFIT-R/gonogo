@@ -26,4 +26,3 @@ pI2(d0, dat0, sg, tmu, tsig, reso, ln, iseed)
 \description{
 Title
 }
-
