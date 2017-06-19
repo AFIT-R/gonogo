@@ -2,13 +2,13 @@
 % Please edit documentation in R/picdat.R
 \name{picdat}
 \alias{picdat}
-\title{Title}
+\title{A simple visual of the data}
 \usage{
 picdat(dat)
 }
 \arguments{
-\item{dat}{}
+\item{dat}{sensitivity tests "w"}
 }
 \description{
-Title
+A simple visual of the data
 }

@@ -9,32 +9,10 @@ nyqrda(dat, lgit = F, ln = F, xmin = -9999, xmax = 9999, conf = 0.95,
   maxitt = 10, eps = 1e-06, zee = 0)
 }
 \arguments{
-\item{dat}{}
-
-\item{lgit}{}
-
-\item{ln}{}
-
-\item{xmin}{}
-
-\item{xmax}{}
-
-\item{conf}{}
-
-\item{small}{}
-
-\item{response}{}
-
-\item{labx}{}
-
-\item{laby}{}
-
-\item{maxitt}{}
-
-\item{eps}{}
+\item{dat}{sensitivity test "w"}
 
 \item{zee}{}
 }
 \description{
-Title
+retrieve some basic information about a test w and the ML fit that was obtained
 }

@@ -2,13 +2,13 @@
 % Please edit documentation in R/lrcb.R
 \name{lrcb}
 \alias{lrcb}
-\title{Likelihood ratio confidence bounds}
+\title{Likelihood ratio confidence bounds plot}
 \usage{
 lrcb(dat)
 }
 \arguments{
-\item{dat}{}
+\item{dat}{sensitivity test "w"}
 }
 \description{
-Likelihood ratio confidence bounds
+Likelihood ratio confidence bounds plot
 }

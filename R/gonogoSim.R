@@ -1,6 +1,13 @@
 #' gonogoSim
 #'
 #' gonogoSim Description
+#' Dynamic sequential algorithms for sensitivity testing (binary response information). It is a three-phase
+#' optimal design of sensitivity experiments that is highly modular. It can be used to meet several test objectives,
+#' from exploratory testing (Phase I), to refined reliability estimates (Phase III). This three-phase procedure
+#' can be viewed as a trilogy of "search-estimate-approximate."
+#'
+#' There are three versions of 3pod, console(one at a time, keyboard entry), batch?? (a vector of responses is looked for)
+#' and one suited for simulation. This function is the simulation version.
 #'
 #' @param mlo Guess for mu_min
 #' @param mhi Guess for mu_max

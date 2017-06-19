@@ -18,26 +18,44 @@ gonogoSim(mlo, mhi, sg, n2, n3, p, lam, dm = 0, ds = 0, ln = F, plt = 0,
 
 \item{n3}{Phase III test size, n3 >= 0, n3 = 0 skips Phase III}
 
-\item{p}{Percentile estimation??}
+\item{p}{Phase III skewed RMJ procedure p (probability)}
+
+\item{lam}{Phase III skewed RMJ procedure lambda (skewness coefficient)}
+
+\item{dm}{dm is the deviation from the true mean (mu_true), which is taken to be (mlo+mhi)/2.}
+
+\item{ds}{ds is the deviation from the true standard deviation (sigma_true), which is taken to be sg.}
 
 \item{ln}{test in log(X) units (Experimental ln=T)}
 
-\item{plt}{pStest.R}
+\item{plt}{plt=0 for no plot}
 
 \item{neyer}{Neyer test (neyer=T) or 3pod test (neyer=F)}
 
-\item{iseed}{0 <= iseed < Inf if you want repeatability in the X's and Y's
+\item{iseed}{An iseed unequal to -1 allows one to repeatedly generate the same sequence of X's & Y's.
+0 <= iseed < Inf if you want repeatability in the X's and Y's
 if iseed is NOT the default, then we set.seed(nd0+iseed) in gd0, where nd0 is the unique trial number within gd0.}
 
-\item{IIgo}{IIgo = F <--> Stop Simulation at End of (1) 3pod Phase I2; (2) Neyer Phase I}
+\item{IIgo}{IIgo = T means we're continuing into Phase II (IIgo = F would be useful to compare 3pod and Neyer Phase I).
+3pod's Phase I sample size (n1) was further broken down into two parts (n11 and n12).
+n11, being the appropriate sample size to compare to Neyer's n1, is the stopping point for the IIgo=F option for the 3pod case.}
 
-\item{M}{}
+\item{M}{the simulation ALWAYS multiplies mlo, mhi, sg, dm and ds by M (default is 1)
+this is done to show procedures are scale-free}
 }
 \value{
 list(d0,jvec,tmu,tsig,v$mu,v$sig,en,abo,titl,uni,p,reso,ln,lam,neyer,M,dm,ds,iseed)
 }
 \description{
 gonogoSim Description
+Dynamic sequential algorithms for sensitivity testing (binary response information). It is a three-phase
+optimal design of sensitivity experiments that is highly modular. It can be used to meet several test objectives,
+from exploratory testing (Phase I), to refined reliability estimates (Phase III). This three-phase procedure
+can be viewed as a trilogy of "search-estimate-approximate."
+}
+\details{
+There are three versions of 3pod, console(one at a time, keyboard entry), batch?? (a vector of responses is looked for)
+and one suited for simulation. This function is the simulation version.
 }
 \examples{
 M= 1;  y1=gonogoSim(0,22,3,5,5,.9,1,plt=1,dm=1,ds=1,M= 1,iseed=5)

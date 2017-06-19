@@ -2,13 +2,13 @@
 % Please edit documentation in R/pSdat3.R
 \name{pSdat3}
 \alias{pSdat3}
-\title{Title}
+\title{Response curve with data plot, simulation version}
 \usage{
 pSdat3(dat)
 }
 \arguments{
-\item{dat}{}
+\item{dat}{sensitivity tests "w"}
 }
 \description{
-Title
+Response curve with data plot, simulation version
 }

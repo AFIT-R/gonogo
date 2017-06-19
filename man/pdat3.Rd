@@ -2,13 +2,13 @@
 % Please edit documentation in R/plotting_functions.R
 \name{pdat3}
 \alias{pdat3}
-\title{Response curve plot}
+\title{Response curve with data plot, console version}
 \usage{
 pdat3(dat)
 }
 \arguments{
-\item{dat}{}
+\item{dat}{sensitivity test "w"}
 }
 \description{
-Response curve plot
+Response curve with data plot, console version
 }

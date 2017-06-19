@@ -2,13 +2,13 @@
 % Please edit documentation in R/jlrcb.R
 \name{jlrcb}
 \alias{jlrcb}
-\title{Joint & Individual likelihood ratio confidence bounds}
+\title{Joint & Individual likelihood ratio confidence bounds plot}
 \usage{
 jlrcb(dat)
 }
 \arguments{
-\item{dat}{}
+\item{dat}{sensitivity test "w"}
 }
 \description{
-Joint & Individual likelihood ratio confidence bounds
+Joint & Individual likelihood ratio confidence bounds plot
 }

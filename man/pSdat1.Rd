@@ -2,13 +2,13 @@
 % Please edit documentation in R/pSdat1.R
 \name{pSdat1}
 \alias{pSdat1}
-\title{Title}
+\title{History plot, simulation version}
 \usage{
 pSdat1(dat)
 }
 \arguments{
-\item{dat}{}
+\item{dat}{sensitivity tests "w"}
 }
 \description{
-Title
+History plot, simulation version
 }

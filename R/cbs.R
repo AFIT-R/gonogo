@@ -5,8 +5,8 @@
 #' cbs(w,1) = joint and/or individual lr confidence bound
 #' cbs(w,2) = confidence bounds on probability (p) and quantile (q) computed via 3 methods:
 #' Likelihood Ratio (LR), Fisher Matrix (FM), and General Linear Model (GLM)
-#' @param maxitt
-#' @param response
+#' @param maxitt not used in function?
+#' @param response not used in function?
 #'
 #' @return
 #' @export

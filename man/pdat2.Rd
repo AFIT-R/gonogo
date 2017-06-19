@@ -2,13 +2,13 @@
 % Please edit documentation in R/plotting_functions.R
 \name{pdat2}
 \alias{pdat2}
-\title{MLE plot}
+\title{MLE's of mu and sigma plot, console version}
 \usage{
 pdat2(dat)
 }
 \arguments{
-\item{dat}{}
+\item{dat}{sensitivity test "w"}
 }
 \description{
-MLE plot
+MLE's of mu and sigma plot, console version
 }

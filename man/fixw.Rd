@@ -7,10 +7,11 @@
 fixw(w, k = 1)
 }
 \arguments{
-\item{w}{}
+\item{w}{sensitivity test}
 
 \item{k}{}
 }
 \description{
-Title
+An error correction feature: Suppose an error was inadvertently entered at the nth previous console read.
+The syntax to go back, fix and continue is: z=fixw(w,n); w=gonogo(newz=F)
 }

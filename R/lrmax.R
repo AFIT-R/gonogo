@@ -1,7 +1,7 @@
 #' Title
 #'
 #' returns several important characteristics of the test data
-#' @param w
+#' @param w sensitivity test "w"
 #' @param plt
 #'
 #' @return

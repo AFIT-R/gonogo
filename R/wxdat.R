@@ -2,7 +2,11 @@
 #'
 #' @param ic for ic= 1,...,25 defines various data sets (in list format) considered while developing these LR graphics
 #'
-#' @return
+#' @return returns several important characteristics of the test data
+#' the overlap category "one23" (1 for interval overlap; 2 for point overlap; and 3 for no overlap);
+#' c1max and c2max, which indicate whether the LR joint confidence regions are bounded (conf1 < c1max, or conf2 < c2max);
+#' and con = # of responses/total tested (which determines the axis of the joint LR confidence region).
+#' conf1 and conf2 are related by: c1max=pchisq(qchisq(c2max,2),1).
 #' @export
 #'
 #' @examples

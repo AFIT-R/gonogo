@@ -2,13 +2,13 @@
 % Please edit documentation in R/plotting_functions.R
 \name{pdat1}
 \alias{pdat1}
-\title{History plot}
+\title{History plot, console version}
 \usage{
 pdat1(dat)
 }
 \arguments{
-\item{dat}{}
+\item{dat}{sensitivity test "w"}
 }
 \description{
-History plot
+History plot, console version
 }

@@ -27,4 +27,12 @@ list(d0,about,titl,unit,en,p,reso,n2n3,ln,init,lam,neyer,savinit,jvec)
 }
 \description{
 gonogo description
+Dynamic sequential algorithms for sensitivity testing (binary response information). It is a three-phase
+optimal design of sensitivity experiments that is highly modular. It can be used to meet several test objectives,
+from exploratory testing (Phase I), to refined reliability estimates (Phase III). This three-phase procedure
+can be viewed as a trilogy of "search-estimate-approximate."
+}
+\details{
+There are three versions of 3pod, console(one at a time, keyboard entry), batch?? (a vector of responses is looked for)
+and one suited for simulation. This function is the console version.
 }

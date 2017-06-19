@@ -2,13 +2,13 @@
 % Please edit documentation in R/pSdat2.R
 \name{pSdat2}
 \alias{pSdat2}
-\title{Title}
+\title{MLE's of mu and sigma plot, simulation version}
 \usage{
 pSdat2(dat)
 }
 \arguments{
-\item{dat}{}
+\item{dat}{sensitivity tests "w"}
 }
 \description{
-Title
+MLE's of mu and sigma plot, simulation version
 }
