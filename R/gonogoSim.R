@@ -18,15 +18,14 @@
 #' @param lam Phase III skewed RMJ procedure lambda (skewness coefficient)
 #' @param dm dm is the deviation from the true mean (mu_true), which is taken to be (mlo+mhi)/2.
 #' @param ds ds is the deviation from the true standard deviation (sigma_true), which is taken to be sg.
-#' @param ln test in log(X) units (Experimental ln=T)
+#' @param ln logical; if TRUE test in log(X) units (Experimental)
 #' @param plt plt=0 for no plot
-#' @param neyer Neyer test (neyer=T) or 3pod test (neyer=F)
+#' @param neyer logical; if TRUE, Neyer test is performed otherwise three-phase optimal design (3pod) test (default)
 #' @param iseed An iseed unequal to -1 allows one to repeatedly generate the same sequence of X's & Y's.
 #' 0 <= iseed < Inf if you want repeatability in the X's and Y's
 #' if iseed is NOT the default, then we set.seed(nd0+iseed) in gd0, where nd0 is the unique trial number within gd0.
-#' @param IIgo IIgo = T means we're continuing into Phase II (IIgo = F would be useful to compare 3pod and Neyer Phase I).
-#' 3pod's Phase I sample size (n1) was further broken down into two parts (n11 and n12).
-#' n11, being the appropriate sample size to compare to Neyer's n1, is the stopping point for the IIgo=F option for the 3pod case.
+#' @param IIgo logical; if TRUE means continue into Phase II,
+#' otherwise IIgo = F would be useful to compare 3pod and Neyer Phase I
 #' @param M the simulation ALWAYS multiplies mlo, mhi, sg, dm and ds by M (default is 1)
 #' this is done to show procedures are scale-free
 #'

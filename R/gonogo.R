@@ -13,10 +13,13 @@
 #' @param mlo Guess for mu_min
 #' @param mhi Guess for mu_max
 #' @param sg Guess for standard deviation, should satisfy: mhi - mlo >= 6*sg
-#' @param newz With the newz=F option, it looks for a list, saved as "z", in the immediate environment
-#' @param reso A "reso=.125" option, e.g., recommends test levels rounded to the nearest one eighth.
-#' @param ln test in log(X) units (Experimental ln=T)
-#' @param neyer Neyer test (neyer=T) or three-phase optimal design (3pod) test (neyer=F)
+#' @param newz logical; if True (default) creates a new variable "z" list of sensitivity tests,
+#' otherwise it looks for a list, saved as "z", in the immediate environment
+#' ?? whats diff btwn z and w from overview.pdf
+#' @param reso Rounding test levels to the nearest selected value. For example: a "reso=.125" option
+#' recommends test levels rounded to the nearest one eighth.
+#' @param ln logical; if TRUE test in log(X) units (Experimental)
+#' @param neyer logical; if TRUE, Neyer test is performed otherwise three-phase optimal design (3pod) test (default)
 #'
 #' @return list(d0,about,titl,unit,en,p,reso,n2n3,ln,init,lam,neyer,savinit,jvec)
 #' @export
