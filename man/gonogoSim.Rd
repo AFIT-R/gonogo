@@ -26,19 +26,18 @@ gonogoSim(mlo, mhi, sg, n2, n3, p, lam, dm = 0, ds = 0, ln = F, plt = 0,
 
 \item{ds}{ds is the deviation from the true standard deviation (sigma_true), which is taken to be sg.}
 
-\item{ln}{test in log(X) units (Experimental ln=T)}
+\item{ln}{logical; if TRUE test in log(X) units (Experimental)}
 
 \item{plt}{plt=0 for no plot}
 
-\item{neyer}{Neyer test (neyer=T) or 3pod test (neyer=F)}
+\item{neyer}{logical; if TRUE, Neyer test is performed otherwise three-phase optimal design (3pod) test (default)}
 
 \item{iseed}{An iseed unequal to -1 allows one to repeatedly generate the same sequence of X's & Y's.
 0 <= iseed < Inf if you want repeatability in the X's and Y's
 if iseed is NOT the default, then we set.seed(nd0+iseed) in gd0, where nd0 is the unique trial number within gd0.}
 
-\item{IIgo}{IIgo = T means we're continuing into Phase II (IIgo = F would be useful to compare 3pod and Neyer Phase I).
-3pod's Phase I sample size (n1) was further broken down into two parts (n11 and n12).
-n11, being the appropriate sample size to compare to Neyer's n1, is the stopping point for the IIgo=F option for the 3pod case.}
+\item{IIgo}{logical; if TRUE means continue into Phase II,
+otherwise IIgo = F would be useful to compare 3pod and Neyer Phase I}
 
 \item{M}{the simulation ALWAYS multiplies mlo, mhi, sg, dm and ds by M (default is 1)
 this is done to show procedures are scale-free}

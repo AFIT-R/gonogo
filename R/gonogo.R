@@ -1,27 +1,61 @@
 #' gonogo
 #'
-#' gonogo description
-#' Dynamic sequential algorithms for sensitivity testing (binary response information). It is a three-phase
-#' optimal design of sensitivity experiments that is highly modular. It can be used to meet several test objectives,
-#' from exploratory testing (Phase I), to refined reliability estimates (Phase III). This three-phase procedure
+#' Dynamic sequential algorithms for sensitivity testing (binary response information). It is a
+#' modern sensitivity test tool to conduct a 3pod (default) test or a Neyer test. This three-phase
+#' optimal design of sensitivity experiments is highly modular. It can be used to meet several test objectives,
+#' from exploratory testing (Phase I), to refined reliability estimates (Phase III). The three-phase procedure
 #' can be viewed as a trilogy of "search-estimate-approximate."
 #'
-#' There are three versions of 3pod, console(one at a time, keyboard entry), batch?? (a vector of responses is looked for)
+#' There are three versions of 3pod, console(one at a time, keyboard entry), batch (a vector of responses is looked for)
 #' and one suited for simulation. This function is the console version.
 #'
+#' A 3pod test is begun by: w=gonogo(mlo,mhi,sg)
 #'
-#' @param mlo Guess for mu_min
-#' @param mhi Guess for mu_max
-#' @param sg Guess for standard deviation, should satisfy: mhi - mlo >= 6*sg
-#' @param newz logical; if True (default) creates a new variable "z" list of sensitivity tests,
-#' otherwise it looks for a list, saved as "z", in the immediate environment
-#' ?? whats diff btwn z and w from overview.pdf
-#' @param reso Rounding test levels to the nearest selected value. For example: a "reso=.125" option
-#' recommends test levels rounded to the nearest one eighth.
-#' @param ln logical; if TRUE test in log(X) units (Experimental)
-#' @param neyer logical; if TRUE, Neyer test is performed otherwise three-phase optimal design (3pod) test (default)
+#' A Neyer test is begun by: w=gonogo(mlo,mhi,sg,neyer=T)
 #'
-#' @return list(d0,about,titl,unit,en,p,reso,n2n3,ln,init,lam,neyer,savinit,jvec)
+#' @param mlo The min value \eqn{\mu_min} to guess a reasonable range (\eqn{\mu_min, \mu_max}) for \eqn{\mu}
+#' @param mhi The max value \eqn{\mu_max} to guess a reasonable range (\eqn{\mu_min, \mu_max}) for \eqn{\mu}
+#' @param sg Guess for standard deviation \eqn{\sigma_g}, should satisfy: \eqn{\mu_max - \mu_min \ge 6*\sigma_g}
+#' @param newz logical; if \code{TRUE} (default) creates a new list of sensitivity tests,
+#' otherwise it looks for a list, saved as \emph{z}, in the immediate environment. So, reserve \emph{z} for that use.
+#' @param reso Specified resolution used in testing.
+#' For example: a "reso=.125" option recommends test levels rounded to the nearest one eighth.
+#' @param ln logical; if \code{TRUE} test in log(\emph{X}) units (Experimental)
+#' @param neyer logical; if \code{TRUE}, Neyer test is performed, otherwise three-phase optimal design (3pod) test
+#'
+#' @return A list containing 14 named objects, which are:
+#'
+#' \code{w$d0}: 		a data frame having column names of ("X", "Y","COUNT","RX","EX","TX","ID"),
+#' where the columns contain the sequence of: X's, Y's, 1's, Recommended X's, Exact X's,
+#' Transformed X's (used for log transformed data), and ID's (Identifying the test Phase), respectively
+#'
+#' \code{w$about}: 	A string containing \code{mlo}, \code{mhi}, \code{sg},
+#' \code{n1}, \code{n2}, \code{n3}, \code{p}, \code{lambda}, and \code{reso}
+#'
+#' \code{w$title}: 	A string containing the user defined title
+#'
+#' \code{w$units}: 	A string containing the user defined units
+#'
+#' \code{w$en}:		A vector of the lengths(\code{n1},\code{n2},\code{n3}) for the 3 Phases (thus far)
+#'
+#' \code{w$p}:		The numeric value of the user define \code{p} (0 if not in Phase III)
+#'
+#' \code{w$reso}:	The resolution (0 default for no rounding of recommended stresses)
+#'
+#' \code{w$n2n3}:	An integer that the function \code{fixw} may use when navigating backwards
+#'
+#' \code{w$ln}:		A logical (\code{TRUE} or \code{FALSE}), \code{TRUE} when method operates on log transformed stresses
+#'
+#' \code{w$init}:		A vector containing the user defined \code{mlo}, \code{mhi}, and \code{sg}
+#'
+#' \code{w$lam}:		A numeric value of the user entry \code{lambda} (0 prior to Phase III)
+#'
+#' \code{w$neyer}:	A logical (\code{TRUE} or \code{FALSE}), \code{TRUE} for Neyer Test, \code{FALSE} for 3pod (default)
+#'
+#' \code{w$savinit}:	A saved version of \code{w$init}
+#'
+#' \code{w$jvec}:	An i by 9 matrix, \eqn{0 \le I \le n3+1} documenting the Phase III calculation
+#'
 #' @export
 #'
 #' @examples
