@@ -9,18 +9,18 @@
 #' There are three versions of 3pod, console(one at a time, keyboard entry), batch?? (a vector of responses is looked for)
 #' and one suited for simulation. This function is the simulation version.
 #'
-#' @param mlo Guess for mu_min
-#' @param mhi Guess for mu_max
-#' @param sg Guess for standard deviation, should satisfy: mhi - mlo >= 6*sg
+#' @param mlo The min value \eqn{\mu_min} to guess a reasonable range (\eqn{\mu_min, \mu_max}) for \eqn{\mu}
+#' @param mhi The max value \eqn{\mu_max} to guess a reasonable range (\eqn{\mu_min, \mu_max}) for \eqn{\mu}
+#' @param sg Guess for standard deviation \eqn{\sigma_g}, should satisfy: \eqn{\mu_max - \mu_min \ge 6*\sigma_g}
 #' @param n2 Phase II test size, n2 >= 0, n2 = 0 skips Phase II and proceeds directly to Phase III
 #' @param n3 Phase III test size, n3 >= 0, n3 = 0 skips Phase III
-#' @param p Phase III skewed RMJ procedure p (probability)
+#' @param p Phase III skewed RMJ procedure p (percentile)
 #' @param lam Phase III skewed RMJ procedure lambda (skewness coefficient)
 #' @param dm dm is the deviation from the true mean (mu_true), which is taken to be (mlo+mhi)/2.
 #' @param ds ds is the deviation from the true standard deviation (sigma_true), which is taken to be sg.
-#' @param ln logical; if TRUE test in log(X) units (Experimental)
+#' @param ln logical; if \code{TRUE} test in log(\emph{X}) units (Experimental)
 #' @param plt plt=0 for no plot
-#' @param neyer logical; if TRUE, Neyer test is performed otherwise three-phase optimal design (3pod) test (default)
+#' @param neyer logical; if \code{TRUE}, Neyer test is performed, otherwise three-phase optimal design (3pod) test
 #' @param iseed An iseed unequal to -1 allows one to repeatedly generate the same sequence of X's & Y's.
 #' 0 <= iseed < Inf if you want repeatability in the X's and Y's
 #' if iseed is NOT the default, then we set.seed(nd0+iseed) in gd0, where nd0 is the unique trial number within gd0.

@@ -18,7 +18,7 @@ gonogoSim(mlo, mhi, sg, n2, n3, p, lam, dm = 0, ds = 0, ln = F, plt = 0,
 
 \item{n3}{Phase III test size, n3 >= 0, n3 = 0 skips Phase III}
 
-\item{p}{Phase III skewed RMJ procedure p (probability)}
+\item{p}{Phase III skewed RMJ procedure p (percentile)}
 
 \item{lam}{Phase III skewed RMJ procedure lambda (skewness coefficient)}
 
