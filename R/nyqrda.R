@@ -1,22 +1,35 @@
-#' Title
+#' @title nyqrda
 #'
-#' retrieve some basic information about a test w and the ML fit that was obtained
+#' @description
+#' Fit a normal, logistic, log normal, log logistic distribution to a data set produced by a \code{gonogo} test.
+#' Additionally, produce a graph of the distribution, its density, and the distribution-free pooled adjacent
+#' violator (PAV) solution. No graph titles are provided in this call.
 #'
-#' @param dat sensitivity test "w"
-#' @param lgit
-#' @param ln
-#' @param xmin
-#' @param xmax
-#' @param conf
-#' @param small
-#' @param response
-#' @param labx
-#' @param laby
-#' @param maxitt
-#' @param eps
+#' @param dat A sensitivity test saved as a list produced by \code{gonogo}
+#' @param lgit logical; if \code{TRUE} for a GLM analysis with a logit link, otherwise probit link
+#' @param ln logical; if \code{TRUE} fit a log normal or log logistic (depending on \code{lgit} option)
+#' @param xmin ?? \code{xmin} isn't used in the function ??
+#' @param xmax ?? \code{xmax} isn't used in the function ??
+#' @param conf Set the one-sided confidence level, default is 95\%
+#' @param small ?? \code{small} isn't used in the function ??
+#' @param response Either 0 or 1, used in \code{pavdf} to compute and plot pooled adjacent violators (PAV)
+#' ?? not sure why its a param when its hard coded to equal 1 in \code{pavdf} call ??
+#' @param labx \emph{x} axis label
+#' @param laby \emph{y} axis label
+#' @param maxitt ?? don't see a maxit param in \code{glm} ??
+#' @param eps ?? don't see a epsilon param in \code{glm} ??
 #' @param zee
+#' if \code{zee} = 0, use the \emph{t} distribution to compute the GLM confidence curves
+#' if \code{zee} = 1, use the \emph{z} distribution instead
 #'
-#' @return
+#' @return A list containing 5 named objects, which are:
+#' \enumerate{
+#' 		\item \code{xglm}: GLM object
+#' 		\item \code{a}: intercept
+#' 		\item \code{b}: slope
+#' 		\item \code{mu}: \eqn{\mu_hat}
+#' 		\item \code{sig}: \eqn{\sigma_hat}
+#' }
 #' @export
 #'
 #' @examples

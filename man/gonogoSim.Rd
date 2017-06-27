@@ -8,11 +8,11 @@ gonogoSim(mlo, mhi, sg, n2, n3, p, lam, dm = 0, ds = 0, ln = F, plt = 0,
   neyer = F, iseed = -1, IIgo = T, M = 1)
 }
 \arguments{
-\item{mlo}{Guess for mu_min}
+\item{mlo}{The min value \eqn{\mu_min} to guess a reasonable range (\eqn{\mu_min, \mu_max}) for \eqn{\mu}}
 
-\item{mhi}{Guess for mu_max}
+\item{mhi}{The max value \eqn{\mu_max} to guess a reasonable range (\eqn{\mu_min, \mu_max}) for \eqn{\mu}}
 
-\item{sg}{Guess for standard deviation, should satisfy: mhi - mlo >= 6*sg}
+\item{sg}{Guess for standard deviation \eqn{\sigma_g}, should satisfy: \eqn{\mu_max - \mu_min \ge 6*\sigma_g}}
 
 \item{n2}{Phase II test size, n2 >= 0, n2 = 0 skips Phase II and proceeds directly to Phase III}
 
@@ -26,11 +26,11 @@ gonogoSim(mlo, mhi, sg, n2, n3, p, lam, dm = 0, ds = 0, ln = F, plt = 0,
 
 \item{ds}{ds is the deviation from the true standard deviation (sigma_true), which is taken to be sg.}
 
-\item{ln}{logical; if TRUE test in log(X) units (Experimental)}
+\item{ln}{logical; if \code{TRUE} test in log(\emph{X}) units (Experimental)}
 
 \item{plt}{plt=0 for no plot}
 
-\item{neyer}{logical; if TRUE, Neyer test is performed otherwise three-phase optimal design (3pod) test (default)}
+\item{neyer}{logical; if \code{TRUE}, Neyer test is performed, otherwise three-phase optimal design (3pod) test}
 
 \item{iseed}{An iseed unequal to -1 allows one to repeatedly generate the same sequence of X's & Y's.
 0 <= iseed < Inf if you want repeatability in the X's and Y's

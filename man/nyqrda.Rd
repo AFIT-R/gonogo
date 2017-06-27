@@ -2,17 +2,53 @@
 % Please edit documentation in R/nyqrda.R
 \name{nyqrda}
 \alias{nyqrda}
-\title{Title}
+\title{nyqrda}
 \usage{
 nyqrda(dat, lgit = F, ln = F, xmin = -9999, xmax = 9999, conf = 0.95,
   small = F, response = 0, labx = "", laby = "PROBABILITY OF RESPONSE",
   maxitt = 10, eps = 1e-06, zee = 0)
 }
 \arguments{
-\item{dat}{sensitivity test "w"}
+\item{dat}{A sensitivity test saved as a list produced by \code{gonogo}}
 
-\item{zee}{}
+\item{lgit}{logical; if \code{TRUE} for a GLM analysis with a logit link, otherwise probit link}
+
+\item{ln}{logical; if \code{TRUE} fit a log normal or log logistic (depending on \code{lgit} option)}
+
+\item{xmin}{?? \code{xmin} isn't used in the function ??}
+
+\item{xmax}{?? \code{xmax} isn't used in the function ??}
+
+\item{conf}{Set the one-sided confidence level, default is 95\%}
+
+\item{small}{?? \code{small} isn't used in the function ??}
+
+\item{response}{Either 0 or 1, used in \code{pavdf} to compute and plot pooled adjacent violators (PAV)
+?? not sure why its a param when its hard coded to equal 1 in \code{pavdf} call ??}
+
+\item{labx}{\emph{x} axis label}
+
+\item{laby}{\emph{y} axis label}
+
+\item{maxitt}{?? don't see a maxit param in \code{glm} ??}
+
+\item{eps}{?? don't see a epsilon param in \code{glm} ??}
+
+\item{zee}{if \code{zee} = 0, use the \emph{t} distribution to compute the GLM confidence curves
+if \code{zee} = 1, use the \emph{z} distribution instead}
+}
+\value{
+A list containing 5 named objects, which are:
+\enumerate{
+		\item \code{xglm}: GLM object
+		\item \code{a}: intercept
+		\item \code{b}: slope
+		\item \code{mu}: \eqn{\mu_hat}
+		\item \code{sig}: \eqn{\sigma_hat}
+}
 }
 \description{
-retrieve some basic information about a test w and the ML fit that was obtained
+Fit a normal, logistic, log normal, log logistic distribution to a data set produced by a \code{gonogo} test.
+Additionally, produce a graph of the distribution, its density, and the distribution-free pooled adjacent
+violator (PAV) solution. No graph titles are provided in this call.
 }

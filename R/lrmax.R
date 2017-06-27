@@ -1,10 +1,15 @@
-#' Title
+#' @title lrmax
 #'
-#' returns several important characteristics of the test data
-#' @param w sensitivity test "w"
-#' @param plt
+#' @description
+#' Lists several important characteristics of the test data pertinent to likelihood ratio
+#' confidence intervals and regions
 #'
-#' @return
+#' @param w A sensitivity test saved as a list produced by \code{gonogo}
+#'
+#' @param plt logical; if \code{TRUE} display a simple visual of the data
+#'
+#' @return This function returns several test data features:
+#'
 #' the overlap category "one23" (1 for interval overlap; 2 for point overlap; and 3 for no overlap);
 #' c1max and c2max, which indicate whether the LR joint confidence regions are bounded (conf1 < c1max, or conf2 < c2max);
 #' and con = # of responses/total tested (which determines the axis of the joint LR confidence region).

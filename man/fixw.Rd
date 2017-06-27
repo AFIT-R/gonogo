@@ -2,14 +2,17 @@
 % Please edit documentation in R/fixw.R
 \name{fixw}
 \alias{fixw}
-\title{Title}
+\title{fixw}
 \usage{
 fixw(w, k = 1)
 }
 \arguments{
-\item{w}{sensitivity test}
+\item{w}{A sensitivity test saved as a list produced by \code{gonogo}}
 
-\item{k}{}
+\item{k}{A positive integer to indicate the last \code{k} entries to fix}
+}
+\value{
+The updated list of the sensitivity test
 }
 \description{
 An error correction feature: Suppose an error was inadvertently entered at the nth previous console read.

@@ -1,22 +1,19 @@
 #' Plots Console Version
 #'
-#' @param dat sensitivity tests "w"
-#' @param plt 8 plots are included
-#' 1: History plot
-#' 2: MLE's of mu and sigma
-#' 3: Response curve, with data
-#' 4: A simple visual of the data
-#' 5: Joint LR multi-confidence bounds
-#' 6: Joint & Individual LR multi-confidence bounds
-#' 7: Joint and/or individual LR confidence bounds
-#' 8: Confidence bounds on probability (p) and quantile (q) computed via 3 methods: Likelihood Ratio (LR), Fisher Matrix (FM) and General Linear Model (GLM)
-#'
-#' Besides a plot, ptest(w,8) also creates a text file cbs.txt in your R working directory.
-#' What you may want do with cbs.txt (outside of R) is: copy its contents, paste it into a word document,
-#' and highlight what you just pasted. Next, select the Table tab; select Table; and select Convert Text to Table.
-#' This will produce a table that will yield: vertical limits (pl,pu) about p (for various p's)
-#' and horizontal limits (ql,qu) about q (for various q's).
-#' The first 15 lines are FM limits; the next 15 lines are LR limits; the last 15 lines are GLM limits.
+#' @param dat A sensitivity test saved as a list produced by \code{gonogo}
+#' @param plt An integer between 1 and 8 to indicate which plot is wanted:
+#' \enumerate{
+#' 		\item 1: History plot
+#' 		\item 2: MLE's of mu and sigma
+#' 		\item 3: Response curve (with data), the pooled adjacent violators (PAV) solution (an optimal step function solution),
+#' 		and 95\% 1-sided confidence bounds computed via \code{glm}
+#' 		\item 4: A simple visual of the data
+#' 		\item 5: Joint LR multi-confidence bounds
+#' 		\item 6: Joint & Individual LR multi-confidence bounds
+#' 		\item 7: Joint and/or individual LR confidence bounds
+#' 		\item 8: Confidence bounds on probability (p) and quantile (q) computed via 3 methods:
+#' 		Likelihood Ratio (LR), Fisher Matrix (FM) and General Linear Model (GLM)
+#' }
 #'
 #' pdat1,2,3 missing? no, they are in the file plotting_functions.R
 #'

@@ -1,11 +1,12 @@
-#' Title
+#' @title fixw
 #'
-#' An error correction feature: Suppose an error was inadvertently entered at the nth previous console read.
+#' @description An error correction feature: Suppose an error was inadvertently entered at the nth previous console read.
 #' The syntax to go back, fix and continue is: z=fixw(w,n); w=gonogo(newz=F)
-#' @param w sensitivity test
-#' @param k
 #'
-#' @return
+#' @param w A sensitivity test saved as a list produced by \code{gonogo}
+#' @param k A positive integer to indicate the last \code{k} entries to fix
+#'
+#' @return The updated list of the sensitivity test
 #' @export
 #'
 #' @examples
