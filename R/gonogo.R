@@ -7,22 +7,23 @@
 #' from exploratory testing (Phase I), to refined reliability estimates (Phase III). The three-phase procedure
 #' can be viewed as a trilogy of "search-estimate-approximate."
 #'
-#' There are three versions of 3pod, console(one at a time, keyboard entry), batch (a vector of responses is looked for)
-#' and one suited for simulation. This function is the console version.
-#'
-#' A 3pod test is begun by: w=gonogo(mlo,mhi,sg)
-#'
-#' A Neyer test is begun by: w=gonogo(mlo,mhi,sg,neyer=T)
-#'
 #' @param mlo The min value \eqn{\mu_min} to guess a reasonable range (\eqn{\mu_min, \mu_max}) for \eqn{\mu}
 #' @param mhi The max value \eqn{\mu_max} to guess a reasonable range (\eqn{\mu_min, \mu_max}) for \eqn{\mu}
 #' @param sg Guess for standard deviation \eqn{\sigma_g}, should satisfy: \eqn{\mu_max - \mu_min \ge 6*\sigma_g}
 #' @param newz logical; if \code{TRUE} creates a new list of sensitivity tests,
 #' otherwise it looks for a list, saved as \emph{z}, in the immediate environment. So, reserve \emph{z} for that use.
 #' @param reso Specified resolution used in testing.
-#' For example: a "reso=.125" option recommends test levels rounded to the nearest one eighth.
+#' For example: a \code{reso = 0.125} option recommends test levels rounded to the nearest one eighth.
 #' @param ln logical; if \code{TRUE} test in log(\emph{X}) units (Experimental)
 #' @param neyer logical; if \code{TRUE}, Neyer test is performed, otherwise three-phase optimal design (3pod) test
+#'
+#' @details
+#' There are three versions of 3pod, console(one at a time, keyboard entry), batch (a vector of responses is looked for)
+#' and one suited for simulation. This function is the console version.
+#'
+#' A 3pod test is begun by: \code{w = gonogo(mlo,mhi,sg)}
+#'
+#' A Neyer test is begun by: \code{w = gonogo(mlo,mhi,sg,neyer=T)}
 #'
 #' @return A list containing 14 named objects, which are:
 #' \enumerate{
@@ -62,9 +63,9 @@
 #' @export
 #'
 #' @examples
-gonogo <- function(mlo = 0, mhi = 0, sg = 0, newz = T, reso = 0, ln = F, neyer = F)
-{
-	jvec <- NULL;
+gonogo <- function(mlo = 0, mhi = 0, sg = 0, newz = T, reso = 0, ln = F, neyer = F) {
+
+  jvec <- NULL;
 
 	if (mlo == 0 & mhi == 0 & sg == 0 & newz == T)
 	{

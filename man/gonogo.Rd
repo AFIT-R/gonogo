@@ -18,7 +18,7 @@ gonogo(mlo = 0, mhi = 0, sg = 0, newz = T, reso = 0, ln = F,
 otherwise it looks for a list, saved as \emph{z}, in the immediate environment. So, reserve \emph{z} for that use.}
 
 \item{reso}{Specified resolution used in testing.
-For example: a "reso=.125" option recommends test levels rounded to the nearest one eighth.}
+For example: a \code{reso = 0.125} option recommends test levels rounded to the nearest one eighth.}
 
 \item{ln}{logical; if \code{TRUE} test in log(\emph{X}) units (Experimental)}
 
@@ -66,7 +66,8 @@ It is a modern sensitivity test tool to conduct a 3pod (default) test or a Neyer
 optimal design of sensitivity experiments is highly modular. It can be used to meet several test objectives,
 from exploratory testing (Phase I), to refined reliability estimates (Phase III). The three-phase procedure
 can be viewed as a trilogy of "search-estimate-approximate."
-
+}
+\details{
 There are three versions of 3pod, console(one at a time, keyboard entry), batch (a vector of responses is looked for)
 and one suited for simulation. This function is the console version.
 
