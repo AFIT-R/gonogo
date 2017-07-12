@@ -1,0 +1,29 @@
+---
+title: "gonogo"
+output:
+  html_document: default
+  pdf_document: default
+date: '`r Sys.Date()`'
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Introduction
+
+When designing experiments, the investigator would vary input variables systematically in order to build useful prediction models for the response variables. Naturally, continuous data is preferred over binary response data since it contains much more information than pass/fail or go/no-go data. However, in practice it is not always possible to collect continuous data and binary response information must be used. This is known as sensitivity testing, where the test specimens are subjected to various levels of stress to generate a binary response. There is a great interest in finding efficient ways to gather binary data through dynamic sequential algorithms.
+
+## Functions
+
+`gonogo` provides several functions ot aid in sequential testing:
+
+| Function | Purpose |
+|:-----------|:--------------------------------------------------------|
+| `gonogo` | A modern sensitivity test tool to conduct a 3pod (default) test or a Neyer test.    
+| `fixw`   | Correct an error made in a previous entry.  
+| `wxdat`  | Sample data sets ready to be graphed.  
+| `lrmax`  | List features of w pertinent to likelihood ratio (LR) confidence intervals and regions
+| `nyqrda` | Fit a normal, logistic, log normal, log logistic distribution to a data set produced by a gonogo test. Additionally, produce a graph of the distribution, its density, and the distribution-free pooled adjacent violator (PAV) solution. No graph titles are provided in this call.    
+| `ptest`  | Provide eight graphs based upon a given gonogo test.
+
