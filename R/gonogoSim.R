@@ -38,9 +38,9 @@
 #'
 #'    \item \code{jvec}: An i by 9 matrix, \eqn{0 \le I \le n3+1} documenting the Phase III calculation
 #'
-#'    \item \code{tmu}:
+#'    \item \code{tmu}: tmu = (mlo + mhi) / 2 + dm;
 #'
-#'    \item \code{tsig}:
+#'    \item \code{tsig}: tsig = sg + ds;
 #'
 #'    \item \code{mu}:
 #'
