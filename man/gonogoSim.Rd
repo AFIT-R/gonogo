@@ -14,21 +14,21 @@ gonogoSim(mlo, mhi, sg, n2, n3, p, lam, dm = 0, ds = 0, ln = F, plt = 0,
 
 \item{sg}{Guess for standard deviation \eqn{\sigma_g}, should satisfy: \eqn{\mu_max - \mu_min \ge 6*\sigma_g}}
 
-\item{n2}{Phase II test size, n2 >= 0, n2 = 0 skips Phase II and proceeds directly to Phase III}
+\item{n2}{Phase II test size, \eqn{n2 \ge 0}, \eqn{n2 = 0} skips Phase II and proceeds directly to Phase III}
 
-\item{n3}{Phase III test size, n3 >= 0, n3 = 0 skips Phase III}
+\item{n3}{Phase III test size, \eqn{n3 \ge 0}, \eqn{n3 = 0} skips Phase III}
 
 \item{p}{Phase III skewed RMJ procedure p (percentile)}
 
 \item{lam}{Phase III skewed RMJ procedure lambda (skewness coefficient)}
 
-\item{dm}{dm is the deviation from the true mean (mu_true), which is taken to be (mlo+mhi)/2.}
+\item{dm}{\code{dm} is the deviation from the true mean (mu_true), which is taken to be (\code{mlo}+\code{mhi})/2.}
 
-\item{ds}{ds is the deviation from the true standard deviation (sigma_true), which is taken to be sg.}
+\item{ds}{\code{ds} is the deviation from the true standard deviation (sigma_true), which is taken to be \code{sg}.}
 
 \item{ln}{logical; if \code{TRUE} test in log(\emph{X}) units (Experimental)}
 
-\item{plt}{plt=0 for no plot}
+\item{plt}{\code{plt}=0 for no plot}
 
 \item{neyer}{logical; if \code{TRUE}, Neyer test is performed, otherwise three-phase optimal design (3pod) test}
 
@@ -39,14 +39,59 @@ if iseed is NOT the default, then we set.seed(nd0+iseed) in gd0, where nd0 is th
 \item{IIgo}{logical; if TRUE means continue into Phase II,
 otherwise IIgo = F would be useful to compare 3pod and Neyer Phase I}
 
-\item{M}{the simulation ALWAYS multiplies mlo, mhi, sg, dm and ds by M (default is 1)
-this is done to show procedures are scale-free}
+\item{M}{the simulation ALWAYS multiplies \code{mlo}, \code{mhi}, \code{sg}, \code{dm} and \code{ds} by \code{M} (default is 1)
+this is done to show procedures are scale-free
+
+#list(d0,jvec,tmu,tsig,v$mu,v$sig,en,abo,titl,uni,p,reso,ln,lam,neyer,M,dm,ds,iseed)}
 }
 \value{
-list(d0,jvec,tmu,tsig,v$mu,v$sig,en,abo,titl,uni,p,reso,ln,lam,neyer,M,dm,ds,iseed)
+A list containing 19 named objects, which are:
+\enumerate{
+
+		\item \code{d0}: A data frame having column names of ("X", "Y","COUNT","RX","EX","TX","ID"),
+		where the columns contain the sequence of: X's, Y's, 1's, Recommended X's, Exact X's,
+		Transformed X's (used for log transformed data), and ID's (Identifying the test Phase), respectively
+
+   \item \code{jvec}: An i by 9 matrix, \eqn{0 \le I \le n3+1} documenting the Phase III calculation
+
+   \item \code{tmu}: tmu = (mlo + mhi) / 2 + dm;
+
+   \item \code{tsig}: tsig = sg + ds;
+
+   \item \code{mu}:
+
+   \item \code{sig}:
+
+		\item \code{en}: A vector of the lengths (\emph{n1},\emph{n2},\emph{n3}) for the 3 Phases (thus far)
+
+		\item \code{abo}: A string containing \code{mlo}, \code{mhi}, \code{sg},
+		      \code{n1}, \code{n2}, \code{n3}, \code{p}, \code{lambda}, and \code{reso}
+
+		\item \code{titl}: A string containing the user defined title
+
+		\item \code{uni}: A string containing the user defined units
+
+
+		\item \code{p}: The numeric value of the user define \emph{p} (0 if not in Phase III)
+
+		\item \code{reso}: The resolution (0 default for no rounding of recommended stresses)
+
+		\item \code{ln}: A logical (\code{TRUE} or \code{FALSE}), \code{TRUE} when method operates on log transformed stresses
+
+		\item \code{lam}: A numeric value of the user entry lambda (0 prior to Phase III)
+
+		\item \code{neyer}: A logical (\code{TRUE} or \code{FALSE}), \code{TRUE} for Neyer Test, \code{FALSE} for 3pod (default)
+
+   \item \code{M}:
+
+   \item \code{dm}:
+
+   \item \code{ds}:
+
+		\item \code{iseed}:
+}
 }
 \description{
-gonogoSim Description
 Dynamic sequential algorithms for sensitivity testing (binary response information). It is a three-phase
 optimal design of sensitivity experiments that is highly modular. It can be used to meet several test objectives,
 from exploratory testing (Phase I), to refined reliability estimates (Phase III). This three-phase procedure

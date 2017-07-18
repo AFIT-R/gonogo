@@ -71,7 +71,7 @@ can be viewed as a trilogy of "search-estimate-approximate."
 There are three versions of 3pod, console(one at a time, keyboard entry), batch (a vector of responses is looked for)
 and one suited for simulation. This function is the console version.
 
-A 3pod test is begun by: w=gonogo(mlo,mhi,sg)
+A 3pod test is begun by: \code{w = gonogo(mlo,mhi,sg)}
 
-A Neyer test is begun by: w=gonogo(mlo,mhi,sg,neyer=T)
+A Neyer test is begun by: \code{w = gonogo(mlo,mhi,sg,neyer=T)}
 }

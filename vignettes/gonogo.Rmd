@@ -6,24 +6,94 @@ output:
 date: '`r Sys.Date()`'
 ---
 
-```{r setup, include=FALSE}
+```{r setup, include = FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
 ## Introduction
 
-When designing experiments, the investigator would vary input variables systematically in order to build useful prediction models for the response variables. Naturally, continuous data is preferred over binary response data since it contains much more information than pass/fail or go/no-go data. However, in practice it is not always possible to collect continuous data and binary response information must be used. This is known as sensitivity testing, where the test specimens are subjected to various levels of stress to generate a binary response. There is a great interest in finding efficient ways to gather binary data through dynamic sequential algorithms.
+When designing experiments, the investigator would vary input variables systematically in order to build useful prediction models for the response variables. Naturally, continuous data is preferred over binary response data since it contains much more information than pass/fail or go/no-go data. However, in practice it is not always possible to collect continuous data and binary response information must be used. This is known as sensitivity testing, where the test specimens are subjected to various levels of stress to generate a binary response. There is a great interest in finding efficient ways to gather binary data through dynamic sequential algorithms. It can be viewed as a trilogy of "search - estimate - approximate"
 
 ## Functions
 
-`gonogo` provides several functions ot aid in sequential testing:
+`gonogo` provides several functions to aid in sequential testing:
 
 | Function | Purpose |
 |:-----------|:--------------------------------------------------------|
-| `gonogo` | A modern sensitivity test tool to conduct a 3pod (default) test or a Neyer test.    
-| `fixw`   | Correct an error made in a previous entry.  
-| `wxdat`  | Sample data sets ready to be graphed.  
-| `lrmax`  | List features of w pertinent to likelihood ratio (LR) confidence intervals and regions
-| `nyqrda` | Fit a normal, logistic, log normal, log logistic distribution to a data set produced by a gonogo test. Additionally, produce a graph of the distribution, its density, and the distribution-free pooled adjacent violator (PAV) solution. No graph titles are provided in this call.    
+| `gonogo` | A modern sensitivity test tool to conduct a 3pod (default) test or a Neyer test.
+| `fixw`   | Correct an error made in a previous entry.
+| `wxdat`  | Sample data sets ready to be graphed.
+| `lrmax`  | List features of \code{w} pertinent to likelihood ratio (LR) confidence intervals and regions
+| `nyqrda` | Fit a normal, logistic, log normal, log logistic distribution to a data set produced by a gonogo test. Additionally, produce a graph of the distribution, its density, and the distribution-free pooled adjacent violator (PAV) solution. No graph titles are provided in this call.
 | `ptest`  | Provide eight graphs based upon a given gonogo test.
+
+To put these functions to use we load the `gonogo` package:
+
+```{r, eval = FALSE, message = FALSE, warning = FALSE}
+library(gonogo)
+```
+
+## Starting a Test
+
+To start a 3pod test we need to supply the gonogo function with the following arguments: 
+
+- mlo: The min value $\mu_{min}$ to guess a reasonable range ($\mu_{min}, \mu_{max}$) for $\mu$
+- mhi: The max value $\mu_{max}$ to guess a reasonable range ($\mu_{min}, \mu_{max}$) for $\mu$
+- sg: Guess for standard deviation $\sigma_g$, should satisfy: $\mu_{max} - \mu_{min} \ge 6\sigma_{g}$
+
+```{r, eval = FALSE, message = FALSE, warning = FALSE}
+w = gonogo(mlo, mhi, sg)  
+```
+
+For a Neyer test, the same arguments are required as above with an additional argument to enable the Neyer testing:
+
+```{r, eval = FALSE, message = FALSE, warning = FALSE}
+w = gonogo(mlo, mhi, sg, neyer = T)  
+```
+
+Next a `title` entry is requested: make it short and sweet. No need to say whether it is 3pod or Neyer. And no need to say it's done in a log scale either. This information, captured in the call, is automatically attached to the succinct title you provide for later use (e.g. graphics).
+
+A `units` entry is also requested (used in axis labeling).
+
+The bulk of the subsequent inputs will be at a prompt: `Test at X ~ X0. Enter X & R`
+
+X0 is the recommended stress level. The user will provide two numbers separated by a blank. The first number, X, will be the
+actual stress level. The second number, R, is the response, which is either 0 or 1.
+
+## Suspending a Test
+
+To suspend a test, just enter an $(X,R)$ pair with $R = -1$; a negative sample size ($n_2$ or $n_3$); or an invalid ($p$,$\lambda$) pair (i.e. $p < 0$, $p > 1$, or $\lambda < 0$).
+
+When asked for 2 entries, make two entries, otherwise the test ends ungracefully.
+
+A successfully suspended (or completed) test is saved in a named list. If the list is named for example `w`, then `w` contains all pertinent information about the sensitivity test.
+
+## Resuming a Test
+
+When tests are suspended gracefully and saved in a list named, for example, `w`, the testing may be resumed by the following two commands:
+
+```{r, eval = FALSE, message = FALSE, warning = FALSE}
+z=w; w = gonogo(newz=F)  
+```
+
+The variable named `z` has special meaning for `gonogo`. With the `newz = F` option, it looks for a list, saved as `z`, in the immediate environment. Therefore, reserve `z` for this intended use.
+
+## Test Phase I
+
+Both the 3pod and Neyer tests begin by pursuing a region of overlap whereby the smallest responding stress response level ($y=1$) is less than the largest non-responding stress response level ($y=0$). The number of samples required is random and is denoted $n_1$. 3pod includes an additional 1 or 2 samples beyond $n_1$ in its Phase I.
+
+## Test Phase II
+
+Stress levels are chosen sequentially in accordance with an D-optimality criterion. Phase II consists of $n_2$ trials, where $n_2$ is user defined at Phase II startup. An $n_2 = 0$ entry is allowed which would skip Phase II entirely.
+
+## Test Phase III
+
+
+
+## Limitations
+
+
+
+## 3pod Implementation
+
 
