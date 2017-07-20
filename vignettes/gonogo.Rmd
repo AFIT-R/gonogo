@@ -12,7 +12,7 @@ knitr::opts_chunk$set(echo = TRUE)
 
 ## Introduction
 
-When designing experiments, the investigator would vary input variables systematically in order to build useful prediction models for the response variables. Naturally, continuous data is preferred over binary response data since it contains much more information than pass/fail or go/no-go data. However, in practice it is not always possible to collect continuous data and binary response information must be used. This is known as sensitivity testing, where the test specimens are subjected to various levels of stress to generate a binary response. There is a great interest in finding efficient ways to gather binary data through dynamic sequential algorithms. It can be viewed as a trilogy of "search - estimate - approximate"
+When designing experiments, the investigator would vary input variables systematically in order to build useful prediction models for the response variables. Continuous response data is preferred over binary response data since it contains much more information by the nature of pass/fail or go/no-go data. However, in practice, it is not always possible to collect continuous data and binary response information must be used. This is known as sensitivity testing, where the test specimens are subjected to various levels of stress to generate a binary response. There is a great interest in finding efficient ways to gather binary data through dynamic sequential algorithms. This package implements the three phase optimal design (3pod) test and the Neyer test. This procedure can be viewed as a trilogy of "search - estimate - approximate"
 
 ## Functions
 
@@ -23,7 +23,7 @@ When designing experiments, the investigator would vary input variables systemat
 | `gonogo` | A modern sensitivity test tool to conduct a 3pod (default) test or a Neyer test.
 | `fixw`   | Correct an error made in a previous entry.
 | `wxdat`  | Sample data sets ready to be graphed.
-| `lrmax`  | List features of \code{w} pertinent to likelihood ratio (LR) confidence intervals and regions
+| `lrmax`  | List features of `w` pertinent to likelihood ratio (LR) confidence intervals and regions
 | `nyqrda` | Fit a normal, logistic, log normal, log logistic distribution to a data set produced by a gonogo test. Additionally, produce a graph of the distribution, its density, and the distribution-free pooled adjacent violator (PAV) solution. No graph titles are provided in this call.
 | `ptest`  | Provide eight graphs based upon a given gonogo test.
 
@@ -37,9 +37,9 @@ library(gonogo)
 
 To start a 3pod test we need to supply the gonogo function with the following arguments: 
 
-- mlo: The min value $\mu_{min}$ to guess a reasonable range ($\mu_{min}, \mu_{max}$) for $\mu$
-- mhi: The max value $\mu_{max}$ to guess a reasonable range ($\mu_{min}, \mu_{max}$) for $\mu$
-- sg: Guess for standard deviation $\sigma_g$, should satisfy: $\mu_{max} - \mu_{min} \ge 6\sigma_{g}$
+- `mlo`: The min value $\mu_{min}$ to guess a reasonable range ($\mu_{min}, \mu_{max}$) for $\mu$
+- `mhi`: The max value $\mu_{max}$ to guess a reasonable range ($\mu_{min}, \mu_{max}$) for $\mu$
+- `sg`: Guess for standard deviation $\sigma_g$, should satisfy: $\mu_{max} - \mu_{min} \ge 6\sigma_{g}$
 
 ```{r, eval = FALSE, message = FALSE, warning = FALSE}
 w = gonogo(mlo, mhi, sg)  
@@ -64,6 +64,7 @@ actual stress level. The second number, R, is the response, which is either 0 or
 
 To suspend a test, just enter an $(X,R)$ pair with $R = -1$; a negative sample size ($n_2$ or $n_3$); or an invalid ($p$,$\lambda$) pair (i.e. $p < 0$, $p > 1$, or $\lambda < 0$).
 
+
 When asked for 2 entries, make two entries, otherwise the test ends ungracefully.
 
 A successfully suspended (or completed) test is saved in a named list. If the list is named for example `w`, then `w` contains all pertinent information about the sensitivity test.
@@ -80,20 +81,73 @@ The variable named `z` has special meaning for `gonogo`. With the `newz = F` opt
 
 ## Test Phase I
 
-Both the 3pod and Neyer tests begin by pursuing a region of overlap whereby the smallest responding stress response level ($y=1$) is less than the largest non-responding stress response level ($y=0$). The number of samples required is random and is denoted $n_1$. 3pod includes an additional 1 or 2 samples beyond $n_1$ in its Phase I.
+The objective of Phase I is to quickly identify a reasonable experimental range by obtaining some response and nonresponse values and to move the stress levels to create an overlapping patern. Both the 3pod and Neyer tests begin by pursuing a region of overlap whereby the smallest responding stress response level ($y=1$) is less than the largest non-responding stress response level ($y=0$). The number of samples required is random and is denoted $n_1$. 3pod includes an additional 1 or 2 samples beyond $n_1$ in its Phase I.
 
 ## Test Phase II
 
-Stress levels are chosen sequentially in accordance with an D-optimality criterion. Phase II consists of $n_2$ trials, where $n_2$ is user defined at Phase II startup. An $n_2 = 0$ entry is allowed which would skip Phase II entirely.
+Its objective is to choose stress levels to optimize the parameter estimation in the assumed model. Stress levels are chosen sequentially in accordance with an D-optimal design criterion following Neyer(1986). Phase II consists of $n_2$ trials, where $n_2$ is user defined at Phase II startup. An $n_2 = 0$ entry is allowed which would skip Phase II entirely.
 
 ## Test Phase III
 
+Phase III stress levels are chosen sequentially according to the skewed Robbins-Munro-Josephs (RMJ) procedure. The user is prompted with three entries:
 
+The first is the number of trials $n_3$. An $n_3 = 0$ entry allows the user to skip Phase III and end the test. Also, a standard Neyer test ends in Phase II with $n_3 = 0$.
+
+The second entry is $p$, which is the RMJ percentile being sought after.
+
+The third entry is $\lambda$, which is the RMJ skewedness coefficient. For values of $p$ near 0, a large $\lambda$ is recommended since this forces an upward bias where bigger upward steps are taken increasing the probability of a response ($R = 1$). For $p$ near 1, a small $\lambda$ is recommended since this forces a downward bias where bigger downward steps are taken increasing the probability of a non-response ($R = 1$).
 
 ## Limitations
 
+`gonogo` testing analyses rely mostly on maximum likelihood estimation of parameters based on a normal (or lognormal) distribution. To help make up for this limitation, `nyqrda` can be used.
 
+In `nyqrda`, confidence limit tables are provided whose rows contain, from left to right, the following six entries:
 
+ - `ql`: the lower confidence limit of the quantile $q$
+ - `q`: the point estimate of the quantile $q$
+ - `qu`: the upper confidence limit of the quantile $q$
+ - `pl`: the lower confidence limit of the percentile $p$
+ - `p`: the point estimate of the percentile $p$
+ - `pu`: the upper confidence limit of the percentile $p$
+ 
 ## 3pod Implementation
+
+Phase I1 has been modified (by Wu, et. al.) from the original procedure to accelerate the expected time to exit when a poor choice of `mlo`, `mhi`, and `sg` are made. This modified 3pod is incorporated into `gonogo`. It was also found that Phase III wasn't invariant under a rescaling of stresses. So, a fix for this problem has been proposed by Wu, et. al. and is incorporated in `gonogo`. These several developments alters the published 3pod example from the Wu & Tian 3pod paper as follows (changes in bold):
+
+| n |     X     | Y | COUNT | RX | EX | TX | ID
+|-|-|-|-|-|-|-|-|
+| 1 |   5.50000 | 0 | 1 |  5.50000  |  5.500000 |  5.50000 | I1(iii)
+| 2 |  16.50000 | 1 | 1 | 16.50000  | 16.500000 | 16.50000 | I1(iii)
+| 3 |  11.00000 | 0 | 1 | 11.00000  | 11.000000 | 11.00000 |  I2(ib)
+| 4 |  13.80000 | 1 | 1 | 13.75000  | 13.750000 | 13.80000 |  I2(ib)
+| 5 |  10.10000 | 0 | 1 | 10.10000  | 10.100000 | 10.10000 |  I2(id)
+| 6 |  14.70000 | 1 | 1 | 14.70000  | 14.700000 | 14.70000 |  I2(id)
+| 7 |  10.40000 | 1 | 1 | 10.40000  | 10.400000 | 10.40000 | rI2(id)
+| 8 |  11.70000 | 1 | 1 | 11.70000  | 11.700000 | 11.70000 |      I3
+| 9 |   9.70000 | 1 | 1 |  9.70000  |  9.700000 |  9.70000 |      I3
+| 10 |  7.30000 | 0 | 1 |  7.26438  |  7.264376 |  7.30000 |     II1
+| 11 |  7.80000 | 0 | 1 |  7.75467  |  7.754671 |  7.80000 |     II2
+| 12 |  8.10000 | 0 | 1 |  8.08350  |  8.083502 |  8.10000 |     II2
+| 13 | 12.20000 | 1 | 1 | 12.16394  | 12.163939 | 12.20000 |     II2
+| 14 |  8.50000 | 0 | 1 |  8.51676  |  8.516761 |  8.50000 |     II2
+| 15 | 11.80000 | 1 | 1 | 11.82596  | 11.825963 | 11.80000 |     II2
+| 16 | __11.71060__ | 1 | 1 | __11.71214* __ | 11.712138 | 11.71060 |    III1
+| 17 | __11.40675__ | 1 | 1 | 11.40675  | 11.406753 | 11.40675 |    III2
+| 18 | __11.15419__ | 0 | 1 | 11.15419  | 11.154188 | 11.15419 |    III2
+| 19 | __12.46178__ | 1 | 1 | 12.46178  | 12.461778 | 12.46178 |    III2
+| 20 | __12.27455__ | 1 | 1 | 12.27455  | 12.274548 | 12.27455 |    III2
+| 21 | __12.10918__ | 1 | 1 | 12.10918  | 12.109181 | 12.10918 |    III2
+| 22 | __11.96126__ | 1 | 1 | 11.96126  | 11.961260 | 11.96126 |    III2
+| 23 | __11.82756__ | 1 | 1 | 11.82756  | 11.827560 | 11.82756 |    III2
+| 24 | __11.70565__ | 1 | 1 | 11.70565  | 11.705654 | 11.70565 |    III2
+| 25 | __11.59367__ | 1 | 1 | 11.59367  | 11.593674 | 11.59367 |    III2
+| 26 | __11.49016__ | 1 | 1 | 11.49016  | 11.490161 | 11.49016 |    III2
+| 27 | __11.39395__ | 1 | 1 | 11.39395  | 11.393952 | 11.39395 |    III2
+| 28 | __11.30410__ | 1 | 1 | 11.30410  | 11.304099 | 11.30410 |    III2
+| 29 | __11.21983__ | 1 | 1 | 11.21983  | 11.219831 | 11.21983 |    III2
+| 30 | __11.14050__ | 1 | 1 | 11.14050  | 11.140500 | 11.14050 |    III2
+| 301 | 0.00000 | 0 | 0 | __11.06557__  |  0.000000 |  0.00000 |    III3
+
+__ *11.71060__ was used to begin Phase III with the paper's value. The Gonogo recommendation of 11.71214 is the value we would recommend here.   
 
 
