@@ -11,6 +11,7 @@ knitr::opts_chunk$set(echo = TRUE)
 ```
 
 ## Introduction
+(based on `gonogoUserFunctions.docx`)
 
 When designing experiments, the investigator would vary input variables systematically in order to build useful prediction models for the response variables. Continuous response data is preferred over binary response data since it contains much more information by the nature of pass/fail or go/no-go data. However, in practice, it is not always possible to collect continuous data and binary response information must be used. This is known as sensitivity testing, where the test specimens are subjected to various levels of stress to generate a binary response. There is a great interest in finding efficient ways to gather binary data through dynamic sequential algorithms. This package implements the three phase optimal design (3pod) test and the Neyer test. This procedure can be viewed as a trilogy of "search - estimate - approximate"
 
@@ -148,6 +149,6 @@ Phase I1 has been modified (by Wu, et. al.) from the original procedure to accel
 | 30 | __11.14050__ | 1 | 1 | 11.14050  | 11.140500 | 11.14050 |    III2
 | 301 | 0.00000 | 0 | 0 | __11.06557__  |  0.000000 |  0.00000 |    III3
 
-__ *11.71060__ was used to begin Phase III with the paper's value. The Gonogo recommendation of 11.71214 is the value we would recommend here.   
+__11.71060* __ was used to begin Phase III with the paper's value. The Gonogo recommendation of 11.71214 is the value we would recommend here.   
 
-
+<!-- ![](/Rplot_3pod.pdf) I can't get this image command to work -->
