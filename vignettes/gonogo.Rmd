@@ -113,7 +113,7 @@ In `nyqrda`, confidence limit tables are provided whose rows contain, from left 
  
 ## 3pod Implementation
 
-Phase I1 has been modified (by Wu, et. al.) from the original procedure to accelerate the expected time to exit when a poor choice of `mlo`, `mhi`, and `sg` are made. This modified 3pod is incorporated into `gonogo`. It was also found that Phase III wasn't invariant under a rescaling of stresses. So, a fix for this problem has been proposed by Wu, et. al. and is incorporated in `gonogo`. These several developments alters the published 3pod example from the Wu & Tian 3pod paper as follows (changes in bold):
+Phase I1 has been modified (by Wu, et. al.) from the original procedure to accelerate the expected time to exit when a poor choice of `mlo`, `mhi`, and `sg` are made. This modified 3pod is incorporated into `gonogo`. It was also found that Phase III wasn't invariant under a rescaling of stresses. So, a fix for this problem has been proposed by Wu, et. al. and is incorporated in `gonogo`. These several developments alters the published 3pod example from the Wu & Tian(2013) 3pod paper as follows (changes in bold):
 
 | n |     X     | Y | COUNT | RX | EX | TX | ID
 |-|-|-|-|-|-|-|-|
@@ -151,4 +151,6 @@ Phase I1 has been modified (by Wu, et. al.) from the original procedure to accel
 
 __11.71060* __ was used to begin Phase III with the paper's value. The Gonogo recommendation of 11.71214 is the value we would recommend here.   
 
-<!-- ![](/Rplot_3pod.pdf) I can't get this image command to work -->
+The following plot uses data provided in the Wu & Tian(2013) 3pod paper. The plot will be generated at every keyboard entry. The various phases of a particular test are indicated. Upon test completion, there will appear on the right margin a small black bar on the inside border of the graph. This indicates the location of the next recommended stress level had the test continued. If the test completed Phase III, the maximum likelihood estimates of $\mu$ and $\sigma$ are used to estimate the percentile of interest $p$ (this was entered at the start of Phase III). This value will be indicated by a small black bar outside the border of the graph.
+
+![](https://raw.githubusercontent.com/klirkb/gonogo/master/Rplot_3pod.png)
