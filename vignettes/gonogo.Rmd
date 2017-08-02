@@ -3,6 +3,7 @@ title: "gonogo"
 output:
   html_document: default
   pdf_document: default
+  word_document: default
 date: '`r Sys.Date()`'
 ---
 
@@ -13,7 +14,7 @@ knitr::opts_chunk$set(echo = TRUE)
 ## Introduction
 (based on `gonogoUserFunctions.docx`)
 
-When designing experiments, the investigator would vary input variables systematically in order to build useful prediction models for the response variables. Continuous response data is preferred over binary response data since it contains much more information by the nature of pass/fail or go/no-go data. However, in practice, it is not always possible to collect continuous data and binary response information must be used. This is known as sensitivity testing, where the test specimens are subjected to various levels of stress to generate a binary response. There is a great interest in finding efficient ways to gather binary data through dynamic sequential algorithms. This package implements the three phase optimal design (3pod) test and the Neyer test. This procedure can be viewed as a trilogy of "search - estimate - approximate"
+When designing experiments, the investigator would vary input variables systematically in order to build useful prediction models for the response variables. Therefore, continuous response data is preferred over binary response data since it contains much more information by the nature of pass/fail or go/no-go data. However, in practice, it is not always possible to collect continuous data and binary response information must be used. This is known as sensitivity testing, where the test specimens are subjected to various levels of stress to generate a binary response. There is a great interest in finding efficient ways to gather binary data through dynamic sequential algorithms. This package implements the three phase optimal design (3pod) test and the Neyer test. This procedure can be viewed as a trilogy of "search - estimate - approximate"
 
 ## Functions
 
@@ -36,11 +37,19 @@ library(gonogo)
 
 ## Starting a Test
 
-To start a 3pod test we need to supply the gonogo function with the following arguments: 
-
+To start a 3pod test, the gonogo function has the following arguments: 
+```{r, eval = FALSE, message = FALSE, warning = FALSE}
+gonogo <- function(mlo = 0, mhi = 0, sg = 0, newz = T, reso = 0, ln = F, neyer = F)
+```
 - `mlo`: The min value $\mu_{min}$ to guess a reasonable range ($\mu_{min}, \mu_{max}$) for $\mu$
 - `mhi`: The max value $\mu_{max}$ to guess a reasonable range ($\mu_{min}, \mu_{max}$) for $\mu$
 - `sg`: Guess for standard deviation $\sigma_g$, should satisfy: $\mu_{max} - \mu_{min} \ge 6\sigma_{g}$
+- `newz`: logical; if `TRUE` creates a new list of sensitivity tests, otherwise it looks for a list, saved as `z`, in the immediate environment. So, reserve `z` for that use.
+- `reso`: Specified resolution used in testing.
+- `ln`: logical; if `TRUE` test in log(\emph{X}) units
+- `neyer`: logical; if `TRUE`, Neyer test is performed, otherwise three-phase optimal design (3pod) test
+
+To just get a 3pod test started the following arguments are needed at minimum:
 
 ```{r, eval = FALSE, message = FALSE, warning = FALSE}
 w = gonogo(mlo, mhi, sg)  
@@ -96,7 +105,7 @@ The first is the number of trials $n_3$. An $n_3 = 0$ entry allows the user to s
 
 The second entry is $p$, which is the RMJ percentile being sought after.
 
-The third entry is $\lambda$, which is the RMJ skewedness coefficient. For values of $p$ near 0, a large $\lambda$ is recommended since this forces an upward bias where bigger upward steps are taken increasing the probability of a response ($R = 1$). For $p$ near 1, a small $\lambda$ is recommended since this forces a downward bias where bigger downward steps are taken increasing the probability of a non-response ($R = 1$).
+The third entry is $\lambda$, which is the RMJ skewedness coefficient. For values of $p$ near 0, a large $\lambda$ is recommended since this forces an upward bias where bigger upward steps are taken increasing the probability of a response ($y = 1$). For $p$ near 1, a small $\lambda$ is recommended since this forces a downward bias where bigger downward steps are taken increasing the probability of a non-response ($y = 1$).
 
 ## Limitations
 
