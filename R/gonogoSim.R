@@ -15,18 +15,15 @@
 #' @param n3 Phase III test size, \eqn{n3 \ge 0}, \eqn{n3 = 0} skips Phase III
 #' @param p Phase III skewed RMJ procedure p (percentile)
 #' @param lam Phase III skewed RMJ procedure lambda (skewness coefficient)
-#' @param dm \code{dm} is the deviation from the true mean (mu_true), which is taken to be (\code{mlo}+\code{mhi})/2.
-#' @param ds \code{ds} is the deviation from the true standard deviation (sigma_true), which is taken to be \code{sg}.
+#' @param dm \eqn{\mu_d} is the deviation from the true mean (\eqn{\mu_true}), which is taken to be (\code{mlo}+\code{mhi})/2.
+#' @param ds \eqn{\sigma_d} is the deviation from the true standard deviation (sigma_true), which is taken to be \code{sg}.
 #' @param ln logical; if \code{TRUE} test in log(\emph{X}) units (Experimental)
 #' @param plt \code{plt}=0 for no plot
 #' @param neyer logical; if \code{TRUE}, Neyer test is performed, otherwise three-phase optimal design (3pod) test
-#' @param iseed An iseed unequal to -1 allows one to repeatedly generate the same sequence of X's & Y's.
-#' 0 <= iseed < Inf if you want repeatability in the X's and Y's
-#' if iseed is NOT the default, then we set.seed(nd0+iseed) in gd0, where nd0 is the unique trial number within gd0.
-#' @param IIgo logical; if TRUE means continue into Phase II,
-#' otherwise IIgo = F would be useful to compare 3pod and Neyer Phase I
+#' @param iseed An iseed not equal to -1 allows one to repeatedly generate the same sequence of X's & Y's.
+#' @param IIgo logical; if TRUE means continue into Phase II, otherwise IIgo = F would be useful to compare 3pod and Neyer Phase I
 #' @param M the simulation ALWAYS multiplies \code{mlo}, \code{mhi}, \code{sg}, \code{dm} and \code{ds} by \code{M} (default is 1)
-#' this is done to show procedures are scale-free
+#' this option allows you to demonstrate that the procedures are scale-free
 #'
 #' #list(d0,jvec,tmu,tsig,v$mu,v$sig,en,abo,titl,uni,p,reso,ln,lam,neyer,M,dm,ds,iseed)
 #' @return A list containing 19 named objects, which are:
@@ -38,9 +35,9 @@
 #'
 #'    \item \code{jvec}: An i by 9 matrix, \eqn{0 \le I \le n3+1} documenting the Phase III calculation
 #'
-#'    \item \code{tmu}: tmu = (mlo + mhi) / 2 + dm;
+#'    \item \code{tmu}: \eqn{\mu_t = (\mu_min + \mu_max) / 2 + \mu_d};
 #'
-#'    \item \code{tsig}: tsig = sg + ds;
+#'    \item \code{tsig}: \eqn{\sigma_t = \sigma_g + \sigma_d};
 #'
 #'    \item \code{mu}:
 #'
@@ -67,13 +64,14 @@
 #'
 #' 		\item \code{neyer}: A logical (\code{TRUE} or \code{FALSE}), \code{TRUE} for Neyer Test, \code{FALSE} for 3pod (default)
 #'
-#'    \item \code{M}:
+#'    \item \code{M}: the simulation ALWAYS multiplies \code{mlo}, \code{mhi}, \code{sg}, \code{dm} and \code{ds} by \code{M} (default is 1)
+#' this option allows you to demonstrate that the procedures are scale-free
 #'
-#'    \item \code{dm}:
+#'    \item \code{dm}: \code{dm} is the deviation from the true mean (mu_true), which is taken to be (\code{mlo}+\code{mhi})/2.
 #'
-#'    \item \code{ds}:
+#'    \item \code{ds}: \code{ds} is the deviation from the true standard deviation (sigma_true), which is taken to be \code{sg}.
 #'
-#' 		\item \code{iseed}:
+#' 		\item \code{iseed}: An iseed not equal to -1 allows one to repeatedly generate the same sequence of X's & Y's.
 #' }
 #'
 #' @export

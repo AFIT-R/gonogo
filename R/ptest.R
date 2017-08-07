@@ -15,7 +15,6 @@
 #' 		Likelihood Ratio (LR), Fisher Matrix (FM) and General Linear Model (GLM)
 #' }
 #'
-#' pdat1,2,3 missing? no, they are in the file plotting_functions.R
 #'
 #' @return
 #' @export

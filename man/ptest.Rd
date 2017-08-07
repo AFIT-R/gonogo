@@ -21,9 +21,7 @@ ptest(dat, plt)
         \item 7: Joint and/or individual LR confidence bounds
         \item 8: Confidence bounds on probability (p) and quantile (q) computed via 3 methods:
         Likelihood Ratio (LR), Fisher Matrix (FM) and General Linear Model (GLM)
-}
-
-pdat1,2,3 missing? no, they are in the file plotting_functions.R}
+}}
 }
 \description{
 Plots Console Version

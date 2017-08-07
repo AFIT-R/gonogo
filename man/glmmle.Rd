@@ -4,7 +4,7 @@
 \alias{glmmle}
 \title{support function}
 \usage{
-glmmle(mydata, response = 1, maxitt = 10, eps = 1e-06, lgit = F)
+glmmle(mydata, response = 1, maxitt = 10, eps = 0.000001, lgit = F)
 }
 \arguments{
 \item{lgit}{}

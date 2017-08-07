@@ -6,7 +6,7 @@
 \usage{
 nyqrda(dat, lgit = F, ln = F, xmin = -9999, xmax = 9999, conf = 0.95,
   small = F, response = 0, labx = "", laby = "PROBABILITY OF RESPONSE",
-  maxitt = 10, eps = 1e-06, zee = 0)
+  maxitt = 10, eps = 0.000001, zee = 0)
 }
 \arguments{
 \item{dat}{A sensitivity test saved as a list produced by \code{gonogo}}
